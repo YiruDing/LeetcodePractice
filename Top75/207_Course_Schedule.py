@@ -5,7 +5,7 @@ class Solution:
         for crs,pre in prerequisites:
             preMap[crs].append(pre)
             
-        # visitSet=all courses along the curr DFS path
+        # visitSet=all courses along the current DFS path
         visitSet = set()
         def dfs(crs):
             if crs in visitSet:
