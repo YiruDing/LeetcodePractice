@@ -1,5 +1,5 @@
 class Solution:
-    def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
+    def canFinish(self, numCourses: int, prerequisites: list[list[int]]) -> bool:
         preMap = {i:[] for i in range(numCourses)}
         # Set the initial value(As a container) for the map
         for crs,pre in prerequisites:
@@ -13,7 +13,8 @@ class Solution:
                 return False
             if preMap[crs] ==[]:
                 return True
-            
+            # Above deal with two different situations...
+            # Then check the "pre" part 
             visitSet.add(crs)
             for pre in preMap[crs]:
                 if not dfs(pre): 
