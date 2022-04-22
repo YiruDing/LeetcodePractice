@@ -17,6 +17,7 @@ function productExcaptSelf(nums) {
       rightProduct.push(1);
     } else {
       rightProduct.unshift(rightProduct[0] * nums[i + 1]);
+      // rightProduct[0] a.k.a the latest product
     }
   }
 

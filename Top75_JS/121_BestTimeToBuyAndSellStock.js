@@ -1,4 +1,5 @@
 // https://www.youtube.com/watch?v=FMa1t8NYDbQ&list=PLY5pAT_51eGw--pxzA_bd9ZHLuqfI_97E&index=3
+
 function maxProfit(prices) {
   let buyPrice = prices[0];
   let profit = 0;
