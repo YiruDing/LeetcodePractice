@@ -1,6 +1,6 @@
-# preOrder: ABC the 1st value is the root node
+# preOrder(ABC) the 1st value is the root node
 #               the 2nd       is the root for the left part
-# inorder:BAC  Every value before the root is going to the left
+# inorder(BAC)  Every value before the root is going to the left
 #                          after                           right
 # Every value of the tree is unique
 
