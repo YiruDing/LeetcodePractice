@@ -9,6 +9,7 @@ class TrieNode:
         for c in word:
             if c not in cur.children:
                 cur.children[c] = TrieNode()
+            # if it already exist...
             cur = cur.children[c]
         cur.isWord = True
 
@@ -29,6 +30,7 @@ class Solution:
                 return False
 
             path.add((r, c))
+            # Checking (r,c) just like "Word Search", but have to check the kid...
             node = node.children[board[r][c]]
             word += board[r][c]
             if node.isWord:

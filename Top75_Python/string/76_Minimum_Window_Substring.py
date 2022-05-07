@@ -32,6 +32,7 @@ class Solution:
                     result = [left, right]
                     resultLen = right - left + 1
                 window[s[left]] -= 1
+                # remove the left most to shrink the window
                 if s[left] in countT and window[s[left]] < countT[s[left]]:
                     have -= 1
                 left += 1
