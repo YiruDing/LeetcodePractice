@@ -1,12 +1,6 @@
 # https://www.lintcode.com/problem/920/
 
 # https://www.youtube.com/watch?v=PaJxqZVPhbg
-from typing import (
-    List,
-)
-from lintcode import (
-    Interval,
-)
 
 """
 Definition of Interval:
@@ -15,7 +9,8 @@ class Interval(object):
         self.start = start
         self.end = end
 """
-
+# Leetcode 252
+# Lintcode 920
 class Solution:
     """
     @param intervals: an array of meeting time intervals
@@ -23,6 +18,7 @@ class Solution:
     """
     def can_attend_meetings(self, intervals):
         intervals.sort(key=lambda i:i.start)
+        # Sorted by the start time
         
         for i in range(1,len(intervals)):
             i1=intervals[i-1]

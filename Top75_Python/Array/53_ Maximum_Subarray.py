@@ -1,8 +1,9 @@
 class Solution:
+
     def maxSubArray(self, nums: list[int]) -> int:
         maxSub = nums[0]
         currentSum = 0
-        
+
         for n in nums:
             if currentSum < 0:
                 currentSum = 0
@@ -10,9 +11,10 @@ class Solution:
                 # That's why I think this is better...
                 # https://www.youtube.com/watch?v=7J5rs56JBs8
             currentSum += n
-            maxSub = max(currentSum,maxSub)
+            maxSub = max(currentSum, maxSub)
         return maxSub
-    
+
+
 # JS solution: https://www.youtube.com/watch?v=WdK1Uhsza_I
 # function maxSubArr(nums){
 #     let solution = nums[0]

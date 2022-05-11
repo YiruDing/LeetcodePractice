@@ -30,6 +30,7 @@ def validTree(self, n, edges):
                 continue
             # skip
             if not dfs(j, i):
+                # ??Not connected???
                 return False
         return True
 
