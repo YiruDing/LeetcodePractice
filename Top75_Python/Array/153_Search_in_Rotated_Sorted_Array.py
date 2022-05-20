@@ -12,11 +12,14 @@ class Solution:
           break
         # If it's sorted...
         
-        # Otherwise we gotta do the binary search
+        # Otherwise it means the array has been ROTATED...
+        # we gotta do the binary search
         middle = (l+r)//2
         result = min(result,nums[middle])
         if nums[middle] >= nums[l]:
+          # Which means nums[middle] is a part of the LEFT (the rotated part)
           l = middle+1
+        # moving to the right 
         else:
           r = middle-1
       return result

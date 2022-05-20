@@ -6,3 +6,5 @@ class Solution:
             result += (i - nums[i])
         
         return result
+# e.g
+# Sum([0,1,2,3])-Sum([0,1,3])
