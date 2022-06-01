@@ -5,6 +5,7 @@ class Solution:
         result = []
         queue = collections.deque()
         queue.append(root)
+        # remember to append the root
 
         while queue:
             qLen = len(queue)
@@ -19,6 +20,7 @@ class Solution:
                     queue.append(node.right)
             if level:
                 # To check the level is not empty
+            # May29: Do it AFTER the for loop!!
                 result.append(level)
 
         return result

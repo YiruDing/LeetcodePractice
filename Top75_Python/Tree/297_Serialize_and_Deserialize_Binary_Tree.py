@@ -1,3 +1,5 @@
+# similar: String 271(659)
+
 # Use preOrder....How to determine whtere the left tree stop?
 # if left == null,than go to the right till it's null
 # Then go to the right of the root...
@@ -10,6 +12,7 @@ class Codec:
 
         def dfs(node):
             if not node:
+            # Base case
                 result.append("N")
                 return
             result.append(str(node.val))
