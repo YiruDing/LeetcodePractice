@@ -8,6 +8,7 @@ class Solution:
         for right in range(len(s)):
             count[s[right]]=1+count.get(s[right],0)
             while(right-left+1)-max(count.values())>k:
+                # Which means the situation that we are not able to make a change
                 count[s[left]]-=1
                 left+=1
             
