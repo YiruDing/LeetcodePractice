@@ -8,10 +8,11 @@ class Solution:
             slow = slow.next
             fast = fast.next.next
 
-        # For the 2nd list...
+        # reverse the slow list...
         # restart to run the rest of the list by moving the pointer
         second = slow.next
         prev = slow.next = None
+        # June 7 reassign the value of 'slow.next'
         while second:
             tmp = second.next
             # Store the spot
@@ -29,4 +30,5 @@ class Solution:
             # Modify these two links
             first.next = second
             second.next = tmp1
+            # June 7 No more "first.next"! It's tmp1 that stored the value
             first, second = tmp1, tmp2
