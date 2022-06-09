@@ -8,3 +8,14 @@ class Solution:
 
         return self.isSameTree(p.left, q.left) and self.isSameTree(
             p.right, q.right)
+
+
+# Another way:
+#  def sameTree(self, s, t):
+#         if not s and not t:
+#             return True
+
+#         if s and t and s.val == t.val:
+#             return (self.sameTree(s.left, t.left)) and (self.sameTree(
+#                 s.right, t.right))
+#         return False
