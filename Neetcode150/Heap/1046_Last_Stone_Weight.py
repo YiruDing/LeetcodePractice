@@ -11,7 +11,8 @@ class Solution:
             if second > first:
                 heapq.heappush(stones, first - second)
         stones.append(0)
-        # To handle the situation that the stones is empty
+        # "At the end,there is at most 1 stone left.Return its weight"
+        # To handle the eade case(that the stones is empty)
         return abs(stones[0])
 
     # because we *-1 in the begining

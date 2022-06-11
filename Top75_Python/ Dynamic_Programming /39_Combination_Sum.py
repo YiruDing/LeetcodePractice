@@ -8,6 +8,8 @@ class Solution:
             if total == target:
                 result.append(cur.copy())
                 # So we can still keep the value that "cur" saved
+                # And use it recursively
+                # (June9 ...???)
                 return
             if i >= len(candidates) or total > target:
                 return
