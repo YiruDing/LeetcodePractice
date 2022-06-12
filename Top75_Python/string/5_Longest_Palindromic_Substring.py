@@ -3,7 +3,7 @@ class Solution:
     def longestPalindrome(self, s: str) -> str:
         result = ""
         resLen = 0
-
+# odd length
         for i in range(len(s)):
             left, right = i, i
             while left >= 0 and right < len(s) and s[left] == s[right]:
@@ -13,7 +13,7 @@ class Solution:
                 left -= 1
                 right += 1
             # extend the pointer outward
-
+# even length
             left, right = i, i + 1
             while left >= 0 and right < len(s) and s[left] == s[right]:
                 if (right - left + 1) > resLen:
