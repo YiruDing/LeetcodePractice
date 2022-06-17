@@ -1,6 +1,10 @@
+# Similar to House Robber
 class Solution:
     def numDecodings(self, s: str) -> int:
       dp={len(s):1}
+      
+    #   If we do the recursion,than this is the Base case
+    # Otherwise it would be a cache
         # mapping
         
         for i in range(len(s)-1,-1,-1):
