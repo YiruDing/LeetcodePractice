@@ -8,6 +8,7 @@ class Solution:
         for n in nums:
             if (n-1) not in numSet:
                 length =0
+                # this should be the beginning of the length
                 while(n+length) in numSet:
                     length+=1
                 longest = max(length,longest)
