@@ -9,6 +9,8 @@ class Solution:
 
             if nums[mid] == target:
                 return mid
+
+
 # 我未成功的嘗試
 #             if nums[mid]>=target and target > nums[right] :
 # #                 左半邊，往右
@@ -21,7 +23,6 @@ class Solution:
 # #               右半邊，往右
 #             elif nums[mid]<target and target < nums[right] :
 #                 right=mid-1
-                
 
             if nums[mid] >= nums[left]:
                 if target > nums[mid] or target < nums[left]:
