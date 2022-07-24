@@ -11,7 +11,7 @@ class Solution:
 
         cur = head
         while cur:
-        # Copy the node
+            # Copy the node
             copy = Node(cur.val)
             oldToCopy[cur] = copy
             # hashMap
@@ -20,7 +20,7 @@ class Solution:
 
         cur = head
         while cur:
-        # Set the pointer
+            # Set the pointer
             copy = oldToCopy[cur]
             copy.next = oldToCopy[cur.next]
             copy.random = oldToCopy[cur.random]
