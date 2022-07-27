@@ -13,11 +13,11 @@ class Solution:
                 break
 
 
-# pur the slow pointer in the intersection,the secod intersection will be the begining of the cycle
+# put the slow pointer in the intersection,the secod intersection will be the begining of the cycle
 # 8:36
 # the distance between the 1st intersection and the beginning of the cyle
 #        ||
-# the distance between the atarting point and the begining of the cycle
+# the distance between the starting point and the begining of the cycle
 
         slow2 = 0
         while True:
