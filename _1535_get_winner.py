@@ -1,5 +1,6 @@
 # https://maxming0.github.io/2020/08/03/Find-the-Winner-of-an-Array-Game/
 
+
 class Solution:
 
     def getWinner(self, arr: List[int], k: int) -> int:

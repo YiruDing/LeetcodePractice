@@ -1,6 +1,3 @@
-from operator import truediv
-
-
 class Solution:
 
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
@@ -12,6 +9,11 @@ class Solution:
                 return False
             return (valid(node.left, left, node.val)
                     and valid(node.right, node.val, right))
+
+
+# 7/31
+# 這裡的left和right為float,而非node：所以不能用return(valid(node.left,left.val,node.val)and valid(node.right,node.val,right.val))？
+# "float" object has no attribution 'val'
 
         return valid(root, float("-inf"), float("inf"))
 

@@ -1,7 +1,7 @@
 # preOrder(ABC) the 1st value is the root node
-#               the 2nd       is the root for the left part
-# inorder(BAC)  Every value before the root is going to the left
-#                          after                           right
+#               the 2nd value is the root for the left part
+# inorder(BAC)  Every value before the root is going to the left subtree
+#               Every value after the root is going to the right subtree
 # Every value of the tree is unique
 
 
@@ -15,7 +15,9 @@ class Solution:
 
         root = TreeNode(preorder[0])
         mid = inorder.index(preorder[0])
+        # 分界在root,即preorder[0]
+        # list.index(x[, start[, end]])
         root.left = self.buildTree(preorder[1:mid + 1], inorder[:mid])
         root.right = self.buildTree(preorder[mid + 1:], inorder[mid + 1:])
-        
+
         return root

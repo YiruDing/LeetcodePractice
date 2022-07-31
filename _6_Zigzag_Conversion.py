@@ -12,7 +12,7 @@ class Solution:
             for i in range(r, len(s), increment):
                 res += s[i]
                 if (r > 0 and r < numRows - 1
-                        and (i + increment - 2 * r) < len(s) < len(s)):
+                        and (i + increment - 2 * r) < len(s)):
                     res += s[i + increment - 2 * r]
 
     # 6:58 Each jump is going to be decreasing by 2
