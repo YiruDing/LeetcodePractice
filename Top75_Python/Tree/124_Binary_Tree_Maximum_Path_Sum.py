@@ -1,4 +1,4 @@
-from cmath import inf
+# 8/1 為什麼跑不了？
 
 
 class Solution:
@@ -16,13 +16,14 @@ class Solution:
             leftMax = dfs(root.left)
             rightMax = dfs(root.right)
             leftMax = max(leftMax, 0)
+            # What if all the values are negtive?
+            # ????Shouldn't it start with leftMax = max(leftMax, float('-inf'))???
             rightMax = max(rightMax, 0)
             #    Update the result with asplit(the global value)
             result[0] = max(result[0], root.val + leftMax + rightMax)
 
             # Return the value without a split
             return root.val + max(leftMax, rightMax)
-
 
 # I can also return max(result[0],root.val+max(leftMax,rightMax))
 
@@ -31,6 +32,29 @@ class Solution:
 
     # https://www.youtube.com/watch?v=9ZNky1wqNUw
     # 7:21
+
+
+# My unsolved solution
+# class Solution:
+#     def maxPathSum(self, root: Optional[TreeNode]) -> int:
+#         res=root.val
+
+#         def seek(node):
+#             if not node:
+#                 return res
+#             if node.left.val>0 and node.left.val>node.right.val:
+#                 res+=node.left.val
+#                 node=node.left
+#             elif node.right.val >0 and node.left.val<node.right.val:
+#                 res+=node.right.val
+#                 node=node.right
+#             elif node.left.val<0 and node.right.val<0:
+#                 res=0
+#                 seek(node.left)
+#                 seek(node.right)
+
+#         seek(root)
+#         return res
 
 
 class Solution:
