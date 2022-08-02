@@ -10,12 +10,12 @@ class Solution:
             # 否則用“while curr““會收到“ＡttributeError:'NoneType'object has no attribute 'next'”
             # 我了解為什麼用“while curr.next != None:” input[1,2,3,4,5]會得到結果[1],“while head.next != None:”會得到[4,3,2,1]，但'NoneType'object？
             # 找到最多人解答的討論串，但是看不懂：https://stackoverflow.com/questions/8949252/why-do-i-get-attributeerror-nonetype-object-has-no-attribute-something
-            curr = head
-            head = head.next
-            curr.next = prev
-            prev = curr
+            curr = head  ＃儲head的值
+            head = head.next ＃h pointer移動
+            curr.next = prev ＃pointer轉向
+            prev = curr ＃指定新的curr
 # 這要用 while curr
-#             next=curr.next
+#             next=curr.next ＃這樣curr之後就可以再接著做下去，不至於斷線
 #             curr.next=prev
 #             prev=curr
 #             curr=next
