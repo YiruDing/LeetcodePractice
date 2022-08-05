@@ -17,6 +17,8 @@
 #             tail=tail.next
 # ???   16行有問題：“NoneType" objects has no attribute "next"
 # 怎麼改呢？
+# 8/2 JM:不能一次做兩件事情，因為前一個group的頭，無法直接.next到下一個group的尾
+
 #         head=head.next
 #         count=k
 #         return result.next

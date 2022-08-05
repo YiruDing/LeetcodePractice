@@ -1,3 +1,4 @@
+# 8/4 取值時，只能split一次...一魚兩吃，maxPathSum可以讓我們取得階段性的值(return的部分)和result
 # 8/1 為什麼跑不了？
 
 
@@ -6,7 +7,7 @@ class Solution:
     def maxPathSum(self, root: Optional[TreeNode]) -> int:
         result = [root.val]
 
-        # To modify it easily, he made it a list
+        # To modify it easily, he made it a list.But we can totally do "self.result=root.val"
 
         # return the max path sum without slplit
         def dfs(root):
@@ -19,7 +20,7 @@ class Solution:
             # What if all the values are negtive?
             # ????Shouldn't it start with leftMax = max(leftMax, float('-inf'))???
             rightMax = max(rightMax, 0)
-            #    Update the result with asplit(the global value)
+            #    Update the result with a split(the global value)
             result[0] = max(result[0], root.val + leftMax + rightMax)
 
             # Return the value without a split
@@ -72,5 +73,5 @@ class Solution:
         return self.ans
 
 
-# Other solution:
+# another solution:
 # https://leetcode.com/problems/binary-tree-maximum-path-sum/discuss/1445709/124-binary-tree-maximum-path-sum-python-solution
