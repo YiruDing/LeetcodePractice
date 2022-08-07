@@ -6,6 +6,7 @@ class TrieNode:
 
     def addWord(self, word):
         cur = self
+        # 不是self.root
         for c in word:
             if c not in cur.children:
                 cur.children[c] = TrieNode()
@@ -27,7 +28,7 @@ class Solution:
         def dfs(r, c, node, word):
             if (r < 0 or c < 0 or r == ROWS or c == COLS
                     or board[r][c] not in node.children or (r, c) in path):
-                return False
+                return
 
             path.add((r, c))
             # Checking (r,c) just like "Word Search", but have to check the kid...
@@ -46,7 +47,6 @@ class Solution:
             for c in range(COLS):
                 dfs(r, c, root, "")
         return list(result)
-
 
 #  indenttion!!!!
 # Turn the set to a list
