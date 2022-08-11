@@ -2,6 +2,7 @@
 # https://www.adamsmith.haus/python/answers/how-to-use-a-max-heap-in-python
 
 #!!!我的問題：8/6 用 _heapify_max和_heappop_max，反而跑不出答案...Why???
+# 8/8 JM 因為沒有搭配的_heappush_max啊！
 
 
 # Get the MAX heap

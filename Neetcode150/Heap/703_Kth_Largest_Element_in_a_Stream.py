@@ -1,9 +1,10 @@
 # Stream?
 # In computer science, a stream is a sequence of data elements made available over time. A stream can be thought of as items on a conveyor belt being processed one at a time rather than in large batches
-
 # https://www.tibco.com/reference-center/what-is-data-streaming
 # ????為什麼the stream data might be a mix of different formats，
 # 但Ｎeetcode卻可以直接把它當array來使用
+
+# 8/8 JM:可以把stream想成是沒有中止的queue
 
 
 # build the min heap of size k

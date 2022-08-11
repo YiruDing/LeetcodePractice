@@ -35,6 +35,7 @@ class Solution:
     # q:[-2,2],[-1,3],[-1,4]
     #   [-1,5]
 
+    # 8/7
     # while time=1 cnt=1+(-3) q.append[-2,2]
     # while time=2 cnt=1+(-2）q.append[-1,3]，此時因為q[0][1] == time，maxHeap要push[-2]
     # while time=3 cnt=1+(-2）q.append[-1,4]，maxHeap要push[-1]
