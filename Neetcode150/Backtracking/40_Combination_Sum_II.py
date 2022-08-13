@@ -14,9 +14,13 @@ class Solution:
             prev = -1
             for i in range(pos, len(candidates)):
                 if candidates[i] == prev:
+                    continue
                     # 因為其他的值都是正數，所以這樣可以確保第一個if statement不用跑
                     # 又可以儲存之後的變數
-                    continue
+
+
+# ???但是Input: candidates = [10,1,2,7,6,1,5], target = 8
+# Output當中可以有  [1,1,6],這又怎麼解釋呢？
                 cur.append(candidates[i])
                 backtrack(cur, i + 1, target - candidates[i])
                 cur.pop()

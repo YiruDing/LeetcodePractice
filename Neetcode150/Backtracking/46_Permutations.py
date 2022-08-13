@@ -1,4 +1,3 @@
-# ?? pop的之後的數值，既然會加回去，那怎麼樣才能讓len(nums) == 1？？？？
 class Solution:
 
     def permute(self, nums: List[int]) -> List[List[int]]:
@@ -22,6 +21,7 @@ class Solution:
             # Add to the end to the array
         return result
 
+
 # The other solution:
 # class Solution:
 #     def permute(self, nums: List[int]) -> List[List[int]]:
@@ -32,18 +32,35 @@ class Solution:
 #             for i in range(len(nums)):
 #                     func(nums[:i]+nums[i+1:], ans+[nums[i]])
 #         func(nums, [])
-#         return perm   
-# ??? 
-# 假設nums=[1,2,3], 
+#         return perm
+
+# 假設nums=[1,2,3],
 # func([1,2,3],[])中，for loop會帶出
 #                   func([2,3],[1])
-#                   func([1,3],[1,2])
-#                   func([1,2],[1,2,3])
-#                   func([1,2,3],[1,2,3])<---這對嗎？怎麼讓len(nums)==0？
-
+#                   func([1,3],[2])
+#                   func([1,2],[3])
+# 第二輪
 # func([2,3],[1])中，for loop會帶出
 #                   func([3],[1,2])
-#                   func([2],[1,2,3])
-#                   func([2,3],[1,2,3])<---這對嗎？怎麼讓len(nums)==0？
-
-
+#                   func([2],[1,3])
+# func([1,3],[2])中，for loop會帶出
+#                   func([3],[2,1])
+#                   func([1],[2,3])
+# func([1,2],[3])中，for loop會帶出
+#                   func([2],[3,1])
+#                   func([1],[3,2])
+# 第三輪
+# func([3],[1,2])中，for loop會帶出
+#                   func([3],[1,2,3])
+# func([2],[1,3])中，for loop會帶出
+#                   func([2],[1,3,2])
+# func([3],[2,1])中，for loop會帶出
+#                   func([3],[2,1,3])
+# func([1],[2,3])中，for loop會帶出
+#                   func([1],[2,3,1])
+# func([2],[3,1])中，for loop會帶出
+#                   func([2],[3,1,2])
+# func([1],[3,2])中，for loop會帶出
+#                   func([1],[3,2,1])
+# 第四輪，因為func中的num都變成[],以上六個值會被納入perm內，最後return
+# 打完收工！
