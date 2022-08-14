@@ -1,6 +1,3 @@
-from turtle import TurtleScreen
-
-
 class Solution:
     def PredictTheWinner(self, nums: List[int]) -> bool:
         
