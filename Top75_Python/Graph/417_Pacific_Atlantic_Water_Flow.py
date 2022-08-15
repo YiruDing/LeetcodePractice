@@ -6,9 +6,10 @@ class Solution:
     def pacificAtlantic(self, heights: list[list[int]]) -> list[list[int]]:
         ROWS, COLS = len(heights), len(heights[0])
         pac, atl = set(), set()
+        visit = set()
 
         def dfs(r, c, visit, prevHeight):
-            if ((r, c) in visit or r == ROWS or c == COLS
+            if (r < 0 or c < 0 or (r, c) in visit or r == ROWS or c == COLS
                     or heights[r][c] < prevHeight):
                 return
             visit.add((r, c))
@@ -19,15 +20,15 @@ class Solution:
 
         for c in range(COLS):
             dfs(0, c, pac, heights[0][c])
-            # Check the top row
+            # Check the left most column
             dfs(ROWS - 1, c, atl, heights[ROWS - 1][c])
-        #  Check the lowest row
+            # Check the right most column
 
         for r in range(ROWS):
             dfs(r, 0, pac, heights[r][0])
-            # Check the left most column
+            # Check the top row
             dfs(r, COLS - 1, atl, heights[r][COLS - 1])
-            # Check the right most column
+            #  Check the lowest row
 
         result = []
         for r in range(ROWS):
