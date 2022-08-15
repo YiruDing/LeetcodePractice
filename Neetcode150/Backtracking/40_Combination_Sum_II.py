@@ -21,6 +21,7 @@ class Solution:
 
 # ???但是Input: candidates = [10,1,2,7,6,1,5], target = 8
 # Output當中可以有  [1,1,6],這又怎麼解釋呢？
+# 8/14: 當你重新呼叫backtrack的時候，prev會被reset回“-1”啊！
                 cur.append(candidates[i])
                 backtrack(cur, i + 1, target - candidates[i])
                 cur.pop()
