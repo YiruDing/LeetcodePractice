@@ -30,10 +30,13 @@ def validTree(self, n, edges):
                 continue
             # skip
             if not dfs(j, i):
-                # ??Not connected???
+                #If there's a loop
                 return False
         return True
 
     # Didn't detect a loop
 
     return dfs(0, -1) and n == len(visit)
+
+
+# n == len(visit) every node has been visited

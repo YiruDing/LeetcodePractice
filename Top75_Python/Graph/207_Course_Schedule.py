@@ -36,6 +36,7 @@ class Solution:
             if not dfs(crs): return False
         return True
 
+
 # to be read...
 # JS solution
 # https://dev.to/cod3pineapple/207-course-schedule-javascript-solution-24e5
