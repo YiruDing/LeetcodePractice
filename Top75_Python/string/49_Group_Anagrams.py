@@ -18,19 +18,22 @@ class Solution:
             # In Python,list can not be key,so we have to make it tuple
 
         return result.values()
-    
+
+
 # Another solution:
 # https://www.youtube.com/watch?v=JG3vgcmHfso
 
+
 class Solution:
-    def groupAnagrams(self,strs:List[str])->List[List[str]]:
-        d={}
-        
+
+    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+        d = {}
+
         for word in strs:
             sk = "".join(sorted(word))
-            
+            # 8/23 sorted的字作key,word作value
             if sk in d:
                 d[sk].append(word)
             else:
-                d[sk]=[word]
+                d[sk] = [word]
         return d.values()
