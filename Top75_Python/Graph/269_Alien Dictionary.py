@@ -120,12 +120,12 @@ class Solution:
                 if len(second_word) < len(first_word): 
                     return ""
         
-        # {t:f,w:e,r:t,e:r}
+        # {w:[e],r:[t],t:[f],f:[],e:[r]}
         seen , cycle = set(),set()
         output = []
         def dfs(node): 
             if node in cycle:
-                # 重複出現？？
+                # 重複出現？？adding the node to the cycle
                 return False
             if node in seen: # no issue no need to visit again , we visit node more then once
                 return True
