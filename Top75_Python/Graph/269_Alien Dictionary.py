@@ -104,7 +104,7 @@ def alienOrder(self, words: List[str]) -> str:
     # Otherwise, convert the ordering we found into a string and return it.
     return "".join(output)
 
-# DFS solution Ｔime complexity好很多...但我以為output應該是“tfwer"而非“wertf"？
+# DFS solution Ｔime complexity好很多...
 
 class Solution:
     def alienOrder(self, words: List[str]) -> str:
@@ -125,7 +125,7 @@ class Solution:
         output = []
         def dfs(node): 
             if node in cycle:
-                # 重複出現？？adding the node to the cycle
+                # 重複出現？形成迴圈？但從後面的cycle.add/cycle.remove看來，一次只加一個字母進去cycle裡面，怎麼可能會有node in cycle的狀況...
                 return False
             if node in seen: # no issue no need to visit again , we visit node more then once
                 return True

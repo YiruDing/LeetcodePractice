@@ -4,13 +4,17 @@
 # doble linked list & a hash map
 # 7:23 全計畫
 
+
 class Node:
+
     def __init__(self, key, val):
-        self.key key
-        self.val =val
+        self.key = key
+        self.val = val
         self.prev = self.next = None
 
+
 class LRUCache:
+
     def __init__(self, capacity: int):
         self.cap = capacity
         self.cache = {}  # map key to node
@@ -20,15 +24,26 @@ class LRUCache:
 
     # remove node from list
     def remove(self, node):
-        prev, nxt = node.prev, node.next
-        prev.next, nxt.prev = nxt, prev
-        
+        prev = node.prev,
+        nxt = node.next
+        # 抽掉node,prev直接接nxt
+        prev.next = nxt
+        nxt.prev = prev
+
 # insert node at right
+
     def insert(self, node):
-        prev, nxt = self.right.prev, self.right
+        # 示意圖見Ｎeetcode 16:19
+        prev = self.right.prev
+        nxt = self.right
         prev.next = nxt.prev = node
-        node.next, node.prev = nxt, prev
+        # 插在中間後，再重新定義與prev和nxt的關係
+        node.next = nxt
+        node.prev = prev
+
+
 # Get it in constant time
+
     def get(self, key: int) -> int:
         if key in self.cache:
             self.remove(self.cache[key])

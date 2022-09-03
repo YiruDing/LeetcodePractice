@@ -50,7 +50,7 @@ class Solution:
 class Solution:
 
     def networkDelayTime(self, times, N, K):
-        t = [0] + [float("inf")] * N #????
+        t = [0] + [float("inf")] * N #原點花0時間，之後默認值為[float("inf")]
         graph = collections.defaultdict(list)
         q = collections.deque([(0, K)])
         for u, v, w in times:
