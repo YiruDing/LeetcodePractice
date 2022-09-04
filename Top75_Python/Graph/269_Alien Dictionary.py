@@ -5,6 +5,8 @@
 #12:22 postOrder DFS BCA
 
 
+#A passed yet confusing solution to me...
+# 看下面的其他解法吧！
 class Solution:
 
     def alienOrder(self, words):
@@ -56,7 +58,6 @@ class Solution:
 
 #8/22 Input：["wrt","wrf","er","ett","rftt"]中，最後一行為何f在t前？因為每個字不需要排序，是字跟字之間才會排序...一字中的字母要怎麼排，本來就不受限
 
-
 # Approach 1: Breadth-First Search
 # Part 1: Extracting Information
 # Part 2: Representing the Relations
@@ -64,12 +65,13 @@ class Solution:
 
 from collections import defaultdict, Counter, deque
 
+
 def alienOrder(self, words: List[str]) -> str:
-    
+
     # Step 0: create data structures + the in_degree of each unique letter to 0.
     adj_list = defaultdict(set)
-    in_degree = Counter({c : 0 for word in words for c in word})
-            
+    in_degree = Counter({c: 0 for word in words for c in word})
+
     # Step 1: We need to populate adj_list and in_degree.
     # For each pair of adjacent words...
     for first_word, second_word in zip(words, words[1:]):
@@ -80,9 +82,9 @@ def alienOrder(self, words: List[str]) -> str:
                     in_degree[d] += 1
                     # 區分出有/無相鄰字母的字，並計算其數目
                 break
-        else: # Check that second word isn't a prefix of first word.
+        else:  # Check that second word isn't a prefix of first word.
             if len(second_word) < len(first_word): return ""
-    
+
     # Step 2: We need to repeatedly pick off nodes with an indegree of 0.
     output = []
     queue = deque([c for c in in_degree if in_degree[c] == 0])
@@ -96,7 +98,7 @@ def alienOrder(self, words: List[str]) -> str:
             if in_degree[d] == 0:
                 # 沒有相鄰字要處理了，就可以加入queue中
                 queue.append(d)
-                
+
     # If not all letters are in output, that means there was a cycle and so
     # no valid ordering. Return "" as per the problem description.
     if len(output) < len(in_degree):
@@ -104,42 +106,44 @@ def alienOrder(self, words: List[str]) -> str:
     # Otherwise, convert the ordering we found into a string and return it.
     return "".join(output)
 
-# DFS solution Ｔime complexity好很多...
 
+# DFS solution Ｔime complexity好很多...
+#9/3 還看不懂...
 class Solution:
+
     def alienOrder(self, words: List[str]) -> str:
         # build the list
-        adj_list = {c : [] for word in words for c in word}
-           # Step 1: Find all edges and put them in adj_list.
+        adj_list = {c: [] for word in words for c in word}
+        # Step 1: Find all edges and put them in adj_list.
         for first_word, second_word in zip(words, words[1:]):
             for c, d in zip(first_word, second_word):
-                if c != d: 
+                if c != d:
                     adj_list[d].append(c)
                     break
-            else: # Check that second word isn't a prefix of first word.
-                if len(second_word) < len(first_word): 
+            else:  # Check that second word isn't a prefix of first word.
+                if len(second_word) < len(first_word):
                     return ""
-        
+
         # {w:[e],r:[t],t:[f],f:[],e:[r]}
-        seen , cycle = set(),set()
+        seen, cycle = set(), set()
         output = []
-        def dfs(node): 
+
+        def dfs(node):
             if node in cycle:
                 # 重複出現？形成迴圈？但從後面的cycle.add/cycle.remove看來，一次只加一個字母進去cycle裡面，怎麼可能會有node in cycle的狀況...
                 return False
-            if node in seen: # no issue no need to visit again , we visit node more then once
+            if node in seen:  # no issue no need to visit again , we visit node more then once
                 return True
-            
+
             cycle.add(node)
             for per in adj_list[node]:
-                if dfs(per) == False: # return result 
+                if dfs(per) == False:  # return result
                     return False
             cycle.remove(node)
             seen.add(node)
             output.append(node)
-                
-        
+
         for c in adj_list:
-            if dfs(c) == False: # found a cycle 
+            if dfs(c) == False:  # found a cycle
                 return ""
         return "".join(output)

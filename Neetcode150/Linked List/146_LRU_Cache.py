@@ -26,7 +26,7 @@ class LRUCache:
     def remove(self, node):
         prev = node.prev,
         nxt = node.next
-        # 抽掉node,prev直接接nxt
+        # 抽掉node(定位),prev直接接nxt（賦值）
         prev.next = nxt
         nxt.prev = prev
 
@@ -37,7 +37,7 @@ class LRUCache:
         prev = self.right.prev
         nxt = self.right
         prev.next = nxt.prev = node
-        # 插在中間後，再重新定義與prev和nxt的關係
+        # 插在中間後(定位)，再重新定義與prev和nxt的關係（賦值）
         node.next = nxt
         node.prev = prev
 

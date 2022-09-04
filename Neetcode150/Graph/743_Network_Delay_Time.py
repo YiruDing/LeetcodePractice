@@ -10,12 +10,11 @@ class Solution:
         for u, v, w in times:
             edges[u].append((v, w))
 
-        minHeap = [(0, k)]
+        minHeap = [(0, k)]  #時間,起始點
         visit = set()
         t = 0
         while minHeap:
             w1, n1 = heapq.heappop(minHeap)
-            # pop出來不是v,w嗎？為何此處倒過來寫呢？因為除了第一個已設定好的值之外，後面都是把v和w倒過來存的
             if n1 in visit:
                 continue
             visit.add(n1)
@@ -28,8 +27,6 @@ class Solution:
 
 
 # Most voted solution
-
-
 # Heap
 class Solution:
 
@@ -50,7 +47,8 @@ class Solution:
 class Solution:
 
     def networkDelayTime(self, times, N, K):
-        t = [0] + [float("inf")] * N #原點花0時間，之後默認值為[float("inf")]
+        t = [0] + [float("inf")] * N
+        #原點花0時間，之後默認值為[float("inf")]...但這個加號是如何運作的呢？一堆list/array（ [0] [float("inf")][float("inf")][float("inf")]...）怎麼呼叫或使用啊？
         graph = collections.defaultdict(list)
         q = collections.deque([(0, K)])
         for u, v, w in times:
