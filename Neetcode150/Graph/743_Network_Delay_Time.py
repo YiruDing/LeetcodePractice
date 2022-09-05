@@ -48,7 +48,8 @@ class Solution:
 
     def networkDelayTime(self, times, N, K):
         t = [0] + [float("inf")] * N
-        #原點花0時間，之後默認值為[float("inf")]...但這個加號是如何運作的呢？一堆list/array（ [0] [float("inf")][float("inf")][float("inf")]...）怎麼呼叫或使用啊？
+        # Python特別的語法...會變成[0,float("inf",float("inf"...]
+        #   因為起始點為1~N的整數，墊一個0能讓之後的index跟起始點的數值相通，操作方便很多
         graph = collections.defaultdict(list)
         q = collections.deque([(0, K)])
         for u, v, w in times:
@@ -56,6 +57,7 @@ class Solution:
         while q:
             time, node = q.popleft()
             if time < t[node]:
+                #node為起始點，t[node]是啥？
                 t[node] = time
                 for v, w in graph[node]:
                     q.append((time + w, v))
