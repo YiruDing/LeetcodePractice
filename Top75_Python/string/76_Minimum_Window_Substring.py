@@ -24,6 +24,7 @@ class Solution:
             window[count] = 1 + window.get(count, 0)
 
             if count in countT and window[count] == countT[count]:
+                # 因為可能有duplicates，所以要確認window[count] == countT[count]
                 have += 1
 
             while have == need:
