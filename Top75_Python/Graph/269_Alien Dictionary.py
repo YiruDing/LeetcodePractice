@@ -130,7 +130,9 @@ class Solution:
 
         def dfs(node):
             if node in cycle:
-                # 重複出現？形成迴圈？但從後面的cycle.add/cycle.remove看來，一次只加一個字母進去cycle裡面，怎麼可能會有node in cycle的狀況...
+                # e.g.[a:"b",b:"c",c:"a"]
+                # 9/5ＪＭ：因為recursion,cycle會一直加下去，直到遇到Ｆalse才會triger上一個return False,一路傳到底
+                # 練習print出來！
                 return False
             if node in seen:  # no issue no need to visit again , we visit node more then once
                 return True
@@ -138,6 +140,7 @@ class Solution:
             cycle.add(node)
             for per in adj_list[node]:
                 if dfs(per) == False:  # return result
+                    # 一但呼叫了dfs(per)，在沒有cycle的前提下，fn會一直跑，這幾個set/dict會一直加
                     return False
             cycle.remove(node)
             seen.add(node)

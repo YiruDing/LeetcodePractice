@@ -50,6 +50,12 @@ class Solution:
         t = [0] + [float("inf")] * N
         # Python特別的語法...會變成[0,float("inf",float("inf"...]
         #   因為起始點為1~N的整數，墊一個0能讓之後的index跟起始點的數值相通，操作方便很多
+        # >>> [0] + [1]
+        # [0, 1]
+        # >>> [0] * 10
+        # [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        # >>> [0] + [float("inf")] * 10
+
         graph = collections.defaultdict(list)
         q = collections.deque([(0, K)])
         for u, v, w in times:
@@ -57,7 +63,7 @@ class Solution:
         while q:
             time, node = q.popleft()
             if time < t[node]:
-                #node為起始點，t[node]是啥？
+                #node為起始點，node值跟index值一樣
                 t[node] = time
                 for v, w in graph[node]:
                     q.append((time + w, v))
@@ -74,16 +80,18 @@ class Solution(object):
         for u, v, w in times:
             graph[u].append((v, w))
         distance = {node: float("inf") for node in range(1, N + 1)}
+        # 此range的設定範圍，也是要讓起始點和index對應
         self.DFS(graph, distance, K, 0)
         totalTime = max(distance.values())
         return totalTime if totalTime < float("inf") else -1
 
     def DFS(self, graph, distance, node, elapsedTimeSoFar):
         if elapsedTimeSoFar >= distance[
-                node]:  # signal alreaady reached to this node. so no need to explore for this node
+                node]:  # signal already reached to this node. so no need to explore for this node
             return
         distance[node] = elapsedTimeSoFar
         for neighbour, time in sorted(graph[node]):
+            # sorted(graph[node]:已經照時間短到長排列了
             self.DFS(graph, distance, neighbour, elapsedTimeSoFar + time)
 
 
