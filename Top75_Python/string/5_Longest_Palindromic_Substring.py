@@ -3,7 +3,7 @@ class Solution:
     def longestPalindrome(self, s: str) -> str:
         result = ""
         resLen = 0
-# odd length
+        # odd length
         for i in range(len(s)):
             left, right = i, i
             while left >= 0 and right < len(s) and s[left] == s[right]:
@@ -12,8 +12,10 @@ class Solution:
                     resLen = right - left + 1
                 left -= 1
                 right += 1
+            print("first loop:", result)
             # extend the pointer outward
-# even length
+
+        # even length
             left, right = i, i + 1
             while left >= 0 and right < len(s) and s[left] == s[right]:
                 if (right - left + 1) > resLen:
@@ -21,27 +23,57 @@ class Solution:
                     resLen = right - left + 1
                 left -= 1
                 right += 1
-
+            print("second loop:", result)
         return result
-    
-    # Java 改良版
+
+
+tmp = Solution()
+tmp.longestPalindrome("sbabab der")
+
+# 以下第一個字母為印出來的result值
+# 一圈一圈print後，我發現第一個和最後一個loop都有溢出len(s)的問題，為什麼還跑得下去呢？？？：第一個loop,left怎麼可能減一?那豈不是變負數了?
+# first loop: s(i=0 s[left]='s',s[right]='s'符合第一個while loop,但是沒能往外走。)
+# 第一個loop,left怎麼可能減一?那豈不是變負數了?
+# second loop: s(i=0 s[left]='s',s[right]='b'跳過第二個while loop)
+# first loop: s(i=1 s[left]='b',s[right]='b'符合第一個while loop,還是沒能往外走。)
+# second loop: s(i=1 s[left]='b',s[right]='a',跳過第二個while loop。)
+# first loop: bab(i=2 s[left]='a',s[right]='a'符合第一個while loop,左右各往外走了一步。)
+# second loop: bab(i=2 s[left]='a',s[right]='b',跳過第二個while loop。)
+# first loop: babab(i=3 s[left]='b',s[right]='b'符合第一個while loop,左右各往外走了兩步。)
+# second loop: babab(i=3 s[left]='b',s[right]='a',跳過第二個while loop。)
+# first loop: babab(i=4 s[left]='a',s[right]='a'符合第一個while loop,左右各往外走了ㄧ步。但因為'bab'長度小於result,不能取代之)
+# second loop: babab(i=4 s[left]='a',s[right]='b',跳過第二個while loop。)
+# first loop: babab(i=5 s[left]='b',s[right]='b'符合第一個while loop,但不能往外走)
+# second loop: babab(i=5 s[left]='b',s[right]='d',跳過第二個while loop。)
+# first loop: babab(i=6 s[left]='d',s[right]='d'符合第一個while loop,但不能往外走)
+# second loop: babab(i=6 s[left]='d',s[right]='e',跳過第二個while loop。)
+# first loop: babab(i=7 s[left]='e',s[right]='e'符合第一個while loop,但不能往外走)
+# second loop: babab(i=7 s[left]='e',s[right]='r',跳過第二個while loop。)
+# first loop: babab(i=8 s[left]='r',s[right]='r'符合第一個while loop,但不能往外走)
+# second loop: babab(i=8 s[left]='r',s[right]出了範圍,跳過第二個while loop。)
+# 最後一個loop,right都超出範圍了，怎麼不會有問題呢？
+
+
+# Java 改良版
 class Solution:
+
     def longestPalindrome(self, s: str) -> str:
         res = ""
         resLen = 0
-        
-        def palindrome(s,l,r):
-            while l>=0 and r < len(s) and s[l]==s[r]:
-                l-=1
-                r+=1
-            return s[l+1:r]
+
+        def palindrome(s, l, r):
+            while l >= 0 and r < len(s) and s[l] == s[r]:
+                l -= 1
+                r += 1
+            return s[l + 1:r]
 
         for i in range(len(s)):
-            s1=palindrome(s,i,i)
-            s2=palindrome(s,i,i+1)
-            res=res if len(res)> len(s1) else s1
-            res=res if len(res)> len(s2) else s2
+            s1 = palindrome(s, i, i)
+            s2 = palindrome(s, i, i + 1)
+            res = res if len(res) > len(s1) else s1
+            res = res if len(res) > len(s2) else s2
         return res
+
 
 # Java solution:
 # class Solution {
@@ -56,14 +88,13 @@ class Solution:
 #         }
 #         return res;
 #     }
-    
+
 #     // find longest palindrom bewteen s[left] and s[right]
 #     public String palindrom(String s, int left, int right) {
-#         while (left >= 0 && right < s.length() 
+#         while (left >= 0 && right < s.length()
 #                && s.charAt(left) == s.charAt(right)) {
 #             left--; right++;
 #         }
 #         return s.substring(left+1, right);
 #     }
 # }
-

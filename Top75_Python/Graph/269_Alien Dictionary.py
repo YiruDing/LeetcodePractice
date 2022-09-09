@@ -140,7 +140,7 @@ class Solution:
             cycle.add(node)
             for per in adj_list[node]:
                 if dfs(per) == False:  # return result
-                    # 一但呼叫了dfs(per)，在沒有cycle的前提下，fn會一直跑，這幾個set/dict會一直加
+                    # 一旦呼叫了dfs(per)，在沒有cycle的前提下，fn會一直跑，這幾個set/dict會一直加
                     return False
             cycle.remove(node)
             seen.add(node)
