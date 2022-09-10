@@ -28,7 +28,7 @@ class Solution:
 
 
 tmp = Solution()
-tmp.longestPalindrome("sbabab der")
+tmp.longestPalindrome("sbababder")
 
 # 以下第一個字母為印出來的result值
 # first loop: s(i=0 s[left]='s',s[right]='s'符合第一個while loop,但是s[left]<0,loop很快就結束了。)

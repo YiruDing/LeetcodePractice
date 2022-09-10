@@ -40,6 +40,8 @@ class Solution:
                 right += 1
         return result
 
+
 # oneliner,睡了一晚，9/10懂了ＸＤ
 def countSubstrings(self, s):
-    return sum(s[i:j] == s[i:j][::-1] for j in range(len(s) + 1) for i in range(j))
+    return sum(s[i:j] == s[i:j][::-1] for j in range(len(s) + 1)
+               for i in range(j))
