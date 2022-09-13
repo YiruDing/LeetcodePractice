@@ -22,3 +22,21 @@ class Solution:
             return dp[(i, buying)]
 
         return dfs(0, True)
+    
+    # https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/discuss/466271/Python-DP-beat-99-with-detail-explanation
+    # HS[i]  max profit at day i, if holding stock after market closes.
+# NHS[i] max profit at day, if not holding stock after market closes
+# NHS_CD:  NHS cooldown
+    class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        if not prices or len(prices) < 2:
+            return 0
+        
+        HS = -prices[0]
+        NHS = NHS_CD = 0
+        for p in prices:
+            cur_HS = max(HS, NHS-p)
+            cur_NHS = max(NHS_CD, HS+p)
+            HS = cur_HS
+            NHS, NHS_CD = NHS_CD, cur_NHS
+        return NHS_CD
