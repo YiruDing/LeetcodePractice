@@ -65,7 +65,12 @@ class Solution:
 # 14:34
 # 3) Updating the pointer(Connect leftPrev and prev)
         leftPrev.next.next = cur
+        # e.g. Neetcode 11:00
+        # [1,2,3,4,5]變「1,4,3,2,5」之後，curr pointer在5, prev在4,
+        # 2 as the end of the reversed linked list,2.next目前為null,要怎麼銜接5?
+        # 因為2沒有任何pointer，所以用leftPrev.next來指稱，然後再用.next來與5連結
         leftPrev.next = prev
+        # 2（reversed前的舊head）和5連結後，1作為leftPrev可以用.next,來改跟4（reversed後的新head）連接了
         return dummy.next
 
 
