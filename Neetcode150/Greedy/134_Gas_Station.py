@@ -11,5 +11,6 @@ class Solution:
 
             if total < 0:
                 total = 0
+                # 重新找起點
                 start = i + 1
         return start
