@@ -14,19 +14,41 @@ class Solution:
         l1, l2, l3 = map(len, [s1, s2, s3])
         if l1 + l2 != l3: return False
         a = set([0])
+        # 要加[],才能interate
+
         # 接下來加入的s3就會從index 1開始排起，有助於我們區別s1和s2的index...
         for (n, c) in zip(range(l3), s3):
+            # 不是zip(l3, s3)
             # 這樣才能用到index
             b = set()
             for i in a:
-                if i < l1 and s1[i] == c: 
+                if i < l1 and s1[i] == c:
                     b.add(i + 1)
                 # 如果s1[i] == c ,b.add(i + 1) ，不會跟下一行撞號
-                if n - i < l2 and s2[n - i] == c: 
+                if n - i < l2 and s2[n - i] == c:
+                    # 不是elif
                     b.add(i)
-                # 始於0-0，這樣就不會有漏掉的數字
+                # n - i始於零減掉零，這樣就不會有漏掉的數字
+                # 可是如果兩個都符合，不是應該兩個數字都加上去嗎？為何第40行沒加“0”呢？
             if len(b) == 0: return False
+            print("b: ", b)
             a = b
+            # 從新的index再去traverse
+        return True
+
+
+tmp = Solution()
+tmp.isInterleave("aabcc", "dbbca", "aadbbcbcac")
+# b:  {1}
+# b:  {2}
+# b:  {2}
+# b:  {2, 3}
+# b:  {2, 3}
+# b:  {2, 4}
+# b:  {3, 4}
+# b:  {4, 5}
+# b:  {4}
+# b:  {5}
 
 # 9/18 待補
 # Neetcode
