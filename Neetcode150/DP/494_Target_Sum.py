@@ -57,24 +57,23 @@ tmp.findTargetSumWays([1, 0], 1)
 # step:  Counter({0: 6, 2: 4, -2: 4, 4: 1, -4: 1}) 十六種可能
 # step:  Counter({1: 10, -1: 10, 3: 5, -3: 5, 5: 1, -5: 1}) 三二種可能
 
-# 3
-# Try[1,0] target:1
-# class Solution(object):
-#     def findTargetSumWays(self, nums, S):
-#         if not nums:
-#             return 0
-#         dic = {nums[0]: 1, -nums[0]: 1} if nums[0] != 0 else {0: 2}
-#         # {1:1,0:1}
-#         for i in range(1, len(nums)):
-#             tdic = {}
-#             for d in dic:
-#                 tdic[d + nums[i]] = tdic.get(d + nums[i], 0) + dic.get(d, 0)
-#                 # tdic[1+0]=tdic.get(1)+dic.get(1)=1+1=2
-#                 tdic[d - nums[i]] = tdic.get(d - nums[i], 0) + dic.get(d, 0)
-#                 # tdic[1-0]=tdic.get(1-0)+dic.get(0)=1+1=2
-#             dic = tdic
-#         return dic.get(S, 0)
-# dic[1]
+
+# https://leetcode.com/problems/target-sum/discuss/97343/Python-DP
+class Solution(object):
+
+    def findTargetSumWays(self, nums, S):
+        if not nums:
+            return 0
+        dict = {nums[0]: 1, -nums[0]: 1} if nums[0] != 0 else {0: 2}
+
+        for i in range(1, len(nums)):
+            tdict = {}
+            for d in dict:
+                tdict[d + nums[i]] = tdict.get(d + nums[i], 0) + dict.get(d, 0)
+                tdict[d - nums[i]] = tdict.get(d - nums[i], 0) + dict.get(d, 0)
+            dict = tdict
+        return dict.get(S, 0)
+
 
 # To be fixed...
 # You gotta go both way(+,-) to deal with array like [1,0]
