@@ -33,6 +33,7 @@ class Solution:
                 # there would be 1 meeting
             else:
                 e += 1
+                # 有一間會議室空出來了
                 count -= 1
             result = max(result, count)
         return result

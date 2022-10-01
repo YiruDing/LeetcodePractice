@@ -16,7 +16,7 @@ class Solution:
         a = set([0])
         # 要加[],才能interate
 
-        # 接下來加入的s3就會從index 1開始排起，有助於我們區別s1和s2的index...
+        # 接下來加入的s3就會從index 1開始排起，有助於區別s1和s2的index...
         for (n, c) in zip(range(l3), s3):
             # 不是zip(l3, s3)
             # 這樣才能用到index
@@ -28,7 +28,7 @@ class Solution:
                 if n - i < l2 and s2[n - i] == c:
                     # 不是elif
                     b.add(i)
-                # n - i始於零減掉零，這樣就不會有漏掉的數字
+                # n - i始於零減零，這樣就不會有漏掉的數字
                 # 可是如果兩個都符合，不是應該兩個數字都加上去嗎？為何第40行沒加“0”呢？
             if len(b) == 0: return False
             print("b: ", b)
