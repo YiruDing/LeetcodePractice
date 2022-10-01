@@ -15,6 +15,17 @@ class Solution:
         return maxSub
 
 
+# 另解（但沒有比較快）
+class Solution:
+
+    def maxSubArray(self, nums: list[int]) -> int:
+        for i in range(1, len(nums)):
+            if nums[i - 1] > 0:
+                nums[i] += nums[i - 1]
+
+        return max(nums)
+
+
 # JS solution: https://www.youtube.com/watch?v=WdK1Uhsza_I
 # function maxSubArr(nums){
 #     let solution = nums[0]

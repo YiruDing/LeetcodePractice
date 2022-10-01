@@ -21,5 +21,7 @@ class Solution:
                 else:
                     cache[i][j] = 1 + min(cache[i + 1][j], cache[i][j + 1],
                                           cache[i + 1][j + 1])
-            # insert (i,j+1)  delete(i+1,j) replace(i+1,j+1)
+            # delete(i+1,j)移動到word1的字母index
+            # insert (i,j+1)移動到word2的字母index
+            # replace(i+1,j+1)兩個字的字母index都有變動
         return cache[0][0]

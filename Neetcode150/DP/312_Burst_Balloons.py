@@ -70,7 +70,7 @@ class Solution(object):
         return dfs(1, len(nums) - 2)
 
 
-# Leetcode 其他解
+# Leetcode 其他解（有pass）
 # https://leetcode.com/problems/burst-balloons/discuss/76243/Python-DP-N3-Solutions
 class Solution:
 
