@@ -8,26 +8,28 @@ class Solution:
         right = len(matrix) - 1
 
         while left < right:
+            # 1 row/time
             for i in range(right - left):
-                #                 ???   Why right-left
-                # 處理的是二者的差，方形的框
-                # 然後再慢慢縮緊這個框架...
+                # Why right-left?
+                # Ｃause we are dealing with the range that would shrink by 2 comparing to the outter row...
+                # 處理的是二者的差，方形的框 然後再慢慢縮緊這個框架...
                 top = left
                 bottom = right
                 topLeft = matrix[top][left + i]
-                # store the value so we can start to move
+                # store the value(which starts with[0][0]) so we can start to move
 
                 matrix[top][left + i] = matrix[bottom - i][left]
-                # 左下-->左上
+                # 左上的位置(which starts with[0][0]) ＝ 原本左下的值(which starts with[len(matrix) - 1][0])
+                # reassign the value
 
                 matrix[bottom - i][left] = matrix[bottom][right - i]
-                # 右下-->左下
+                #  左下的位置(which starts with[len(matrix) - 1][0]) ＝ 原本右下的值(which starts with[len(matrix) - 1][len(matrix) - 1])
 
                 matrix[bottom][right - i] = matrix[top + i][right]
-                # 右上-->右下
+                # 右下的位置(which starts with[len(matrix) - 1][len(matrix) - 1]) ＝原本右上的值(which starts with[0][len(matrix) - 1])
 
                 matrix[top + i][right] = topLeft
-                # 右下-->左下
+                # 右上的位置(which starts with[0][len(matrix) - 1])=原本左上的值
 
                 # Then deal with the inner square
             right -= 1
