@@ -31,7 +31,7 @@ class Solution:
                 matrix[top + i][right] = topLeft
                 # 右上的位置(which starts with[0][len(matrix) - 1])=原本左上的值
 
-                # Then deal with the inner square
+            #!!!Then deal with the inner square with a smaller height as well as the width
             right -= 1
             left += 1
         # result=[['a'*len(matrix)]*len(matrix[0])]
@@ -40,3 +40,13 @@ class Solution:
         #     for j in range(len(matrix[0])):
         #         while result:
         #             result.append()
+
+# Input: [[1,2,3,4],[5,6,7,8],[9,10,11,12],[13,14,15,16]]
+# left起始值為0,right為3,i為0,1,2,
+# topLeft位置分別為[0][0],[0][2],[0][1]
+#然後left為1,right為2,i為0
+# topLeft位置為[1][1]
+# topLeft:  1
+# topLeft:  2
+# topLeft:  3
+# topLeft:  6
