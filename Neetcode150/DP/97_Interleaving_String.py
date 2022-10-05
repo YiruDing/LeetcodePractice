@@ -30,6 +30,7 @@ class Solution:
                     b.add(i)
                 # n - i始於零減零，這樣就不會有漏掉的數字
                 # 可是如果兩個都符合，不是應該兩個數字都加上去嗎？為何第40行沒加“0”呢？
+                # 來來來，張開眼睛，b[0]沒符合啊！
             if len(b) == 0: return False
             print("b: ", b)
             a = b
@@ -53,7 +54,6 @@ tmp.isInterleave("aabcc", "dbbca", "aadbbcbcac")
 # 9/18 待補
 # Neetcode
 
-
 class Solution:
 
     def isInterleave(self, s1: str, s2: str, s3: str) -> bool:
@@ -65,8 +65,8 @@ class Solution:
 
         for i in range(len(s1), -1, -1):
             for j in range(len(s2), -1, -1):
-                if i < len(s1) and s1[i] == s3[i + j] and dp[i + 1][j]:
+                if i < len(s1) and s1[i] == s3[i + j] and dp[i + 1][j]#正下方為True:
                     dp[i][j] = True
-                if j < len(s2) and s2[j] == s3[i + j] and dp[i][j + 1]:
+                if j < len(s2) and s2[j] == s3[i + j] and dp[i][j + 1]#正右方為True:
                     dp[i][j] = True
         return dp[0][0]

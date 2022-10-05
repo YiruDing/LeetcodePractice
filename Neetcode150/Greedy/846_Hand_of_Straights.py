@@ -32,7 +32,33 @@ class Solution:
         return True
 
 
+# 另解
+from collections import Counter
+
+
+class Solution:
+
+    def isNStraightHand(self, hand: List[int], W: int) -> bool:
+        counter = Counter(hand)
+        keys = sorted(counter.keys())
+        for k in keys:
+            count = counter[k]
+            if count < 0:
+                return False
+            if count == 0:
+                continue
+            for i in range(W):
+                if not k + i in counter:
+                    return False
+                counter[k + i] -= count
+        return set(counter.values()).issubset({0})
+
+# set.issubset(set)
+# The issubset() method returns True if all items in the set exists in the specified set, otherwise it retuns False.
+
+
 # Neetcode
+# faster than 95.23%
 class Solution:
 
     def isNStraightHand(self, hand: List[int], groupSize: int) -> bool:

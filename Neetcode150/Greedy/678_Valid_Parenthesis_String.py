@@ -1,23 +1,26 @@
 # My solution
 # To be fixed...
-class Solution:
+# 思考以下不同的狀況，就會發現（和＊真的要分開處理
+# (*)
+# ＊）＊＊））
+# (()))(
+# class Solution:
 
-    def checkValidString(self, s: str) -> bool:
-        if len(s) <= 1:
-            return False
+#     def checkValidString(self, s: str) -> bool:
+#         if len(s) <= 1:
+#             return False
 
-        check = []
-        for i in range(len(s)):
-            if i == "）":
-                if "（" not in check or "*" not in check:
-                    return False
-                elif "（" in check or "*" in check:
-                    check.pop()
-            else:
-                check.append(s[i])
-
-        return True if len(check) == 0 or (len(check) == 1
-                                           and check[0] == "*") else False
+#         check = []
+#         for i in range(len(s)):
+#             if i == "）":
+#                 if "（" not in check or "*" not in check:
+#                     return False
+#                 elif "（" in check or "*" in check:
+#                     check.pop()
+#             else:
+#                 check.append(s[i])
+#         return True if len(check) == 0 or (len(check) == 1
+#                                            and check[0] == "*") else False
 
 
 class Solution:

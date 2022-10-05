@@ -6,21 +6,15 @@ class Solution:
         for n in nums:
             res=n^res
         return res
-    
-    # My solution:
-    # class Solution:
-    # def singleNumber(self, nums: List[int]) -> int:
-    #     if len(nums)==1:
-    #         return nums[0]
-        
-    #     visit={}
-        
-    #     for i in nums:
-    #         if i not in visit:
-    #             visit[i]=1
-    #         else:
-    #             visit[i]+=1
-        
-    #     for i in visit:
-    #         if visit[i]==1:
-    #             return i
+# [4,1,2,1,2]
+# res: 4
+# res: 5
+# res: 7
+# res: 6
+# res: 4
+# 不一樣就加進來，一樣就減出去
+
+class Solution:
+    def singleNumber(self, nums: List[int]) -> int:
+        return reduce(lambda x, y: x ^ y, nums)
+    # reduce(fun,seq) 

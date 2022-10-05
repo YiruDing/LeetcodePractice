@@ -46,5 +46,10 @@ class Solution:
         :rtype: int
         """
         sign = [1, -1][x < 0]
+# It is only a trick. which mean [1, -1][True] or [1, -1][False] as well as [1, -1][0] or [1, -1][1]
+# we shoule use
+# sign = 1 if x>0 else -1
+# that is easy to understand
+
         rst = sign * int(str(abs(x))[::-1])
         return rst if -(2**31) - 1 < rst < 2**31 else 0

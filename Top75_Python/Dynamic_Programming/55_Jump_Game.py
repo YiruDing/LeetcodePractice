@@ -12,16 +12,19 @@ class Solution:
 
 # My solution...
 # To be fixed...
-class Solution:
+# class Solution:
 
-    def canJump(self, nums: List[int]) -> bool:
-        res = [[False] * len(nums)]
-        res[-1] = True
-        for i in range(len(nums) - 1, -1, -1):
-            if i - nums[i] > 0:
-                n = nums[i]
-                while n:
-                    res[i - n] = True
-                    # list assignment index out of range
-                    n -= 1
-        return res[0]
+#     def canJump(self, nums: List[int]) -> bool:
+#         res = [[False] * len(nums)]
+#         res[-1] = True
+#         #舉例來說 [2,3,1,0,4]
+#         for i in range(len(nums) - 2, -1, -1):
+#             if i - nums[i] > 0:
+#                 # 3>0
+#                 n = nums[i]
+#                 #如果n=0就跑不動了
+#                 while n:
+#                     res[i - n] = True
+#                     # Leetcode 回傳的訊息是 list assignment index out of range…
+#                     n -= 1
+#         return res[0]

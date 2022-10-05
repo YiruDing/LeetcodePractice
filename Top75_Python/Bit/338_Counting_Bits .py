@@ -14,3 +14,20 @@ class Solution:
             result[i] = 1 + result[i - offset]
 
         return result
+
+
+# https://leetcode.com/problems/counting-bits/
+def countBits(self, num):
+    """
+        :type num: int
+        :rtype: List[int]
+        """
+
+    iniArr = [0]
+    if num > 0:
+        amountToAdd = 1
+        while len(iniArr) < num + 1:
+            iniArr.extend([x + 1 for x in iniArr])
+    # list1.extend(iterable)
+    # 1/2/4/8個為一組，每組會從頭開始，多加1...
+    return iniArr[0:num + 1]
