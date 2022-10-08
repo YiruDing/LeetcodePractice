@@ -12,6 +12,7 @@ class Solution:
                 digit = int(num1[i1]) * int(num2[i2])
                 res[i1 + i2] += digit
                 # 16:54 res[i1 + i2] may be two digit
+                # 10/7儲存在這裡是為了之後可以用到
                 res[i1 + i2 + 1] += res[i1 + i2] // 10
                 res[i1 + i2] = res[i1 + i2] % 10
                 # e.g. 8 * 12
@@ -20,4 +21,9 @@ class Solution:
         while begin < len(res) and res[begin] == 0:
             begin += 1
         res = map(str, res[begin:])
+        # map(fun, iter)
+        # input"2" "3"
+        # res before being joined:  <map object at 0x7f220442b2e0>
+        # 十六進位(Hex)
+
         return "".join(res)

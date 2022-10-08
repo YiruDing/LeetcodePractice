@@ -2,6 +2,7 @@ class DetectSquares:
 
     def __init__(self):
         self.ptsCount = defaultdict(int)
+        # https://www.geeksforgeeks.org/defaultdict-in-python/
         self.pts = []
 
     def add(self, point: List[int]) -> None:
