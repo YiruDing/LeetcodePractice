@@ -20,4 +20,5 @@ class Solution:
             prevMap[n] = i
         return
 
-    #     June 3 :Why would I need to return again here??
+    # 6/3 Why would I need to return again here??
+    # 10/8 Neetcode自己說，he just did it for no reason

@@ -7,6 +7,9 @@ class DetectSquares:
 
     def add(self, point: List[int]) -> None:
         self.ptsCount[tuple(point)] += 1
+        # 如果不加tuple,會出錯（unhashable type:list）
+        # !!!Key必須為immutable
+        # The Python "TypeError: unhashable type: 'list'" occurs when we use a list as a key in a dictionary or an element in a set. To solve the error, convert the list to a tuple, e.g. tuple(my_list) as list objects are mutable and unhashable.
         self.pts.append(point)
 
     def count(self, point: List[int]) -> int:
@@ -21,4 +24,5 @@ class DetectSquares:
             # 5:44
             # !!These are the other 2 points that could form the square!!
             # Consider that there might be duplicate...
+            # !!difaultdic在此應該是有妙用！如果不存在，可以直接給個0
         return res

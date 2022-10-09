@@ -4,17 +4,19 @@ from collections import defaultdict
 class Solution:
 
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
-        result = defaultdict(list)
+        result = defaultdict(list)#Mapping the charChount to list of Anagrams
 
-        for s in strs:
-            count = [0] * 26
+        for word in strs:
+            count = [0] * 26#a...z
 
-            for c in s:
+            for c in word:
                 count[ord(c) - ord("a")] += 1
-                # ！！！Ｍａｙ９待修理
+                # 用來記錄字母數一樣的word
+                # 長得像這樣：
+                # !! [1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0]
                 # Take the Unicode代碼點 以作為ｉｎｄｅｘ
                 # https://vimsky.com/zh-tw/examples/usage/ord-function-python.html
-            result[tuple(count)].append(s)
+            result[tuple(count)].append(word)
             # In Python,list can not be key,so we have to make it tuple
 
         return result.values()
@@ -27,7 +29,7 @@ class Solution:
 class Solution:
 
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
-        d = {}
+        d =  defaultdict(list)
 
         for word in strs:
             sk = "".join(sorted(word))
