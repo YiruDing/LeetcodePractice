@@ -15,6 +15,7 @@ class Solution:
 
         if not (top <= top):
             return False
+        # None of the rows contains target value
         row = (top + bot) // 2
         left, right = 0, COLS - 1
         while left <= right:
