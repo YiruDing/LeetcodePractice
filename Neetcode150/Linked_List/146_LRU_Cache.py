@@ -49,6 +49,7 @@ class LRUCache:
             self.remove(self.cache[key])
             self.insert(self.cache[key])
             return self.cache[key].val
+        # 為何可以用cache[key]直接找到對應的node?linkedlist可以這樣操作嗎？
         return -1
 
     def put(self, key: int, value: int) -> None:
@@ -63,3 +64,57 @@ class LRUCache:
             self.remove(lru)
             print(lru in self.cache)
             del self.cache[lru.key]
+            # 可以請你談談 del嗎？我目前找到的資料提到，
+            # “python有GC机制，所以，del语句作用在变量上，而不是数据对象上。”
+            # 這是什麼意思啊？
+            # https://blog.csdn.net/love1code/article/details/47276683
+            
+# 另解，還是有用到del
+#出處：https://leetcode.com/problems/lru-cache/discuss/45926/Python-Dict-%2B-Double-LinkedList
+class Node:
+def __init__(self, k, v):
+    self.key = k
+    self.val = v
+    self.prev = None
+    self.next = None
+
+class LRUCache:
+def __init__(self, capacity):
+    self.capacity = capacity
+    self.dic = dict()
+    self.head = Node(0, 0)
+    self.tail = Node(0, 0)
+    self.head.next = self.tail
+    self.tail.prev = self.head
+
+def get(self, key):
+    if key in self.dic:
+        n = self.dic[key]
+        self._remove(n)
+        self._add(n)
+        return n.val
+    return -1
+
+def set(self, key, value):
+    if key in self.dic:
+        self._remove(self.dic[key])
+    n = Node(key, value)
+    self._add(n)
+    self.dic[key] = n
+    if len(self.dic) > self.capacity:
+        n = self.head.next
+        self._remove(n)
+        del self.dic[n.key]
+
+def _remove(self, node):
+    p = node.prev
+    n = node.next
+    p.next = n
+    n.prev = p
+
+def _add(self, node):
+    p = self.tail.prev
+    p.next = node
+    self.tail.prev = node
+    node.prev = p
+    node.next = self.tail
