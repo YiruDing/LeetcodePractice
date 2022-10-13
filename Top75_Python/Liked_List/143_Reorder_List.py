@@ -1,18 +1,26 @@
 class Solution:
 
     def reorderList(self, head: Optional[ListNode]) -> None:
-        #  Because the slow list will stop running when fast reachs the end
+        #1  Because the slow list will stop running when fast reachs the end
         # So we can get the 1st half list then...
         slow, fast = head, head.next
+        # 為何fast可為head 亦可為head.next?
+        # 這只是先多跑一步而已，s位移後的index到時候還是一樣的
         while fast and fast.next:
             slow = slow.next
             fast = fast.next.next
 
-        # reverse the slow list...
+        #2 reverse the second half of the list...
         # restart to run the rest of the list by moving the pointer
         second = slow.next
         prev = slow.next = None
-        # June 7 reassign the value of 'slow.next'
+        # 不能省略 reassigning the value of 'slow.next'，
+        # Error - Found cycle in the ListNode
+        # 如果是prev  = None，最後一個會指向Ｎone
+
+        # input[1,2,3,4]，看看印出來什麼？
+        # prev: None
+        # second: ListNode{val: 3, next: ListNode{val: 4, next: None}}
         while second:
             tmp = second.next
             # Store the spot
@@ -22,7 +30,10 @@ class Solution:
             second = tmp
 
 
-# Merge two halfs
+# 印出來
+# prev: ListNode{val: 4, next: ListNode{val: 3, next: None}}
+# second: None
+#3 Merge two halfs
         first, second = head, prev
         # a.k.a the 1st and 2nd list
         while second:

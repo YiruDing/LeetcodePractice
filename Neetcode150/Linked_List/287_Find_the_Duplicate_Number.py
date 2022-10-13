@@ -13,6 +13,15 @@ class Solution:
                 break
 
 
+# slow: 1
+# fast: 3
+# slow: 3
+# fast: 4
+# slow: 2
+# fast: 4
+# slow: 4
+# fast: 4
+
 # put the slow pointer in the intersection,the secod intersection will be the begining of the cycle
 # 8:36
 # the distance between the 1st intersection and the beginning of the cyle

@@ -10,6 +10,7 @@ class Solution:
         # hashMap
 
         cur = head
+        #1. Copy EVERY single node
         while cur:
             # Copy the node
             copy = Node(cur.val)
@@ -19,12 +20,14 @@ class Solution:
             cur = cur.next
 
         cur = head
+        # 2. Set the pointer
         while cur:
-            # Set the pointer
             copy = oldToCopy[cur]
+            # Get the copy of the node
             copy.next = oldToCopy[cur.next]
             copy.random = oldToCopy[cur.random]
             cur = cur.next
+            # update the pointer
 
         return oldToCopy[head]
         # 9:09
