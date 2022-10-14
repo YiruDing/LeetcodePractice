@@ -33,18 +33,28 @@ class Solution:
 
         while True:
             kth = self.getKth(groupPrev, k)
+            # input [1,2,3,4,5] k=2 印出來長這樣
+            # kth: ListNode{val: 2, next: ListNode{val: 3, next: ListNode{val: 4, next: ListNode{val: 5, next: None}}}}
+            # kth: ListNode{val: 4, next: ListNode{val: 5, next: None}}
+            # kth: None
             if not kth:
                 break
             groupNext = kth.next
 
             prev = kth.next
-            # a.k.a groupNext?
+            # input [1,2,3,4,5] k=2 印出來長這樣
+            # prev: ListNode{val: 3, next: ListNode{val: 4, next: ListNode{val: 5, next: None}}}
+            # prev: ListNode{val: 5, next: None}
+
+            #為什麼prev的起始值跟groupNext一樣？?因為這樣才可以接續嗎？
+            #143 Reorder List也有類似狀況，為什麼呢？
 
             curr = groupPrev.next
             # ???
             # 每個group的頭
 
             while curr != groupNext:
+                # 處理在groupNext之前的node
                 tmp = curr.next
                 curr.next = prev
                 prev = curr
