@@ -34,6 +34,7 @@ class Solution:
 # Minimize Max Distance to Gas Station
 # Split Array Largest Sum
 
+# 以下為錯誤答案，僅作為備查紀錄
 # Why can't I do this???
 # class Solution:
 #     def minEatingSpeed(self, piles: List[int], h: int) -> int:
