@@ -46,8 +46,8 @@ class Solution:
             # prev: ListNode{val: 3, next: ListNode{val: 4, next: ListNode{val: 5, next: None}}}
             # prev: ListNode{val: 5, next: None}
 
-            #為什麼prev的起始值跟groupNext一樣？?因為這樣才可以接續嗎？
-            #143 Reorder List也有類似狀況，為什麼呢？
+            #prev的起始值跟groupNext一樣，是因為這樣才可以接續嗎？
+            #143 Reorder List也有類似狀況，卻多了Ｎone值，是為了當作一個新linked list來merge嗎？那為何這裡不需要呢？
 
             curr = groupPrev.next
             # ???
