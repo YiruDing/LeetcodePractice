@@ -18,7 +18,7 @@ class Solution:
                 l2 = lists[i + 1] if (i + 1) < len(lists) else None
                 mergedLists.append(self.mergeList(l1, l2))
             lists = mergedLists
-            # merdeLists as a variable
+            # mergedLists as a variable
         return lists[0]
 
     def mergeList(self, L1, L2):
@@ -49,6 +49,7 @@ class Solution:
 # 下解...
 # 搭配heap來找出最小值，這個我懂，但是用counter是為什麼呢？
 import heapq
+
 
 class Solution:
 
