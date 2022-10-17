@@ -16,8 +16,7 @@ def getSum(self, a, b):
 # Not so good but workable
 
 # 蠻好的解法
-class Solution(object):
-   #         1.Why carry is a&b:
+#         1.Why carry is a&b:
 #         If a and b are both 1 at the same digit, it creates one carry.
 #         Because you can only use 0 and 1 in binary, if you add 1+1 together, it will roll that over to the next digit, and the value will be 0 at this digit.
 #         if they are both 0 or only one is 1, it doesn't need to carry.
@@ -40,7 +39,7 @@ class Solution:
         # -1
         #  1
         return a&mask if b > mask else a
-
+# 類似解法
 class Solution:
 
     def getSum(self, a, b):
