@@ -1,3 +1,4 @@
+# Time complexity是 Ｏ（log(max(piles))*len(piles)）
 class Solution:
 
     def minEatingSpeed(self, piles: List[int], h: int) -> int:
@@ -5,10 +6,11 @@ class Solution:
         # 把所有可能的值，當作一個array，便於找出最適合的答案
         result = right
 
-        while left <= right:
+        while left <= right: #範圍是 log(max(piles)),可假設為m
+
             k = (left + right) // 2
             hours = 0
-            for p in piles:
+            for p in piles: # 範圍是len(piles)，可假設為n
                 hours += math.ceil(p / k)
 
             if h >= hours:

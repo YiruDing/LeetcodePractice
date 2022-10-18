@@ -30,6 +30,8 @@ class Solution:
         carry = 0
         mask = 0xffffffff
         # int(mask) 為4294967295
+        # !!重點不是數字!!
+        # 10/17JM:因為Ｐython沒有bit限制，無法處理溢位的問題，所以以此限制其為32bit，才不會變成沒完沒了的bit..
         while b & mask != 0:
             carry = (a & b) << 1
             a = a ^ b
@@ -89,7 +91,7 @@ class Solution(object):
             return a
         
 # 10/17 Neetcode更新的答案
-
+# 10/17JM:其實麻煩的是負數...會有無限多“1”加個不停的問題
 class Solution:
     def getSum(self, a: int, b: int) -> int:
         def add(a, b):
@@ -98,17 +100,23 @@ class Solution:
             return add(a ^ b, (a & b) << 1)
 
         if a * b < 0:  # assume a < 0, b > 0
+            # 如果兩個都為正比較簡單，一正一負比較麻煩
+            # 那如果兩個都是負的呢？
+            
             if a > 0:
                 return self.getSum(b, a)
+            # 交換位置，使第一個parameter為負
             if add(~a, 1) == b:  # -a == b
                 return 0
+            # 假設兩個相加為零（在bit內須先按位取反，然後加一），就這樣處理
             if add(~a, 1) < b:  # -a < b
+                # ~是運算元
+                # a的絕對值較大...-a和-b相加，然後取負號
                 return add(~add(add(~a, 1), add(~b, 1)), 1)  # -add(-a, -b)
 
         return add(a, b)  # a*b >= 0 or (-a) > b > 0
     
-#！！！10/3 這個我看得懂！ 找時間轉為Python
-
+#！！！10/3 這個我看得懂！ 但不能直接轉為Python
 
 # https://skyyen999.gitbooks.io/-leetcode-with-javascript/content/questions/371md.html
 # JS解

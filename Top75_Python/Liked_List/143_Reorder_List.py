@@ -6,6 +6,8 @@ class Solution:
         slow, fast = head, head.next
         # 為何fast可為head 亦可為head.next?
         # 這只是先多跑一步而已，s位移後的index到時候還是一樣的
+        # 10/17ＪＭ：除非你有dummy head當作起跑點,不然直接用head,起跑點必須不同
+        # 可是兩個都可以pass...
         while fast and fast.next:
             slow = slow.next
             fast = fast.next.next
@@ -15,6 +17,7 @@ class Solution:
         second = slow.next
         prev = slow.next = None
         # 不能省略 reassigning the value of 'slow.next'，
+        # 要截斷再重逢
         # Error - Found cycle in the ListNode
         # 如果是prev  = None，最後一個會指向Ｎone
 
