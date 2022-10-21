@@ -16,6 +16,7 @@ class Solution:
                 if grid[r][c] == 1:
                     fresh += 1
                 if grid[r][c] == 2:
+                # elif也沒差 
                     q.append([r, c])
                     # Or ((r,c))
 
