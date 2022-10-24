@@ -64,7 +64,7 @@ class Solution:
 
 # 14:34
 # 3) Updating the pointer(Connect leftPrev and prev)
-# 10/23以下兩行不得置換
+# 10/23以下兩行不得置換 否則.next.next就會接錯...
         leftPrev.next.next = cur
         # e.g. Neetcode 11:00
         # [1,2,3,4,5]變「1,4,3,2,5」之後，curr pointer在5, prev在4,

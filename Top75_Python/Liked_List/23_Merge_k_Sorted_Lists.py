@@ -48,8 +48,9 @@ class Solution:
 
 # 下解...
 # 搭配heap來找出最小值，這個我懂，但是用counter是為什麼呢？
-import heapq
+# 10/24 JM:這樣若遇二值相同，還可以比較下一個值，而不會卡住
 
+import heapq
 
 class Solution:
 
@@ -60,21 +61,14 @@ class Solution:
                 continue
             heapq.heappush(h, (ls.val, counter, ls))
             # heapq.heappush(heap, item)
-            # Push the value item onto the heap, maintaining the heap invariant.
-            # 為何item長這個樣子(current.next.val, counter, current.next)？？
-            print("h:", h)
-            # 一次append一組Linked list??
-            # h: [(1, 0, ListNode{val: 1, next: ListNode{val: 4, next: ListNode{val: 5, next: None}}})]
-            # h: [(1, 0, ListNode{val: 1, next: ListNode{val: 4, next: ListNode{val: 5, next: None}}}), (1, 1, ListNode{val: 1, next: ListNode{val: 3, next: ListNode{val: 4, next: None}}})]
-            # h: [(1, 0, ListNode{val: 1, next: ListNode{val: 4, next: ListNode{val: 5, next: None}}}), (1, 1, ListNode{val: 1, next: ListNode{val: 3, next: ListNode{val: 4, next: None}}}), (2, 2, ListNode{val: 2, next: ListNode{val: 6, next: None}})]
-
+            #(current.next.val, counter, current.next)
             counter += 1
         head = None
         while h:
             _, _, current = heapq.heappop(h)
             # (ls.val, counter, ls)
             head = head or current
-            # current是linked list唷
+            # current是linked list當下的頭，但是為何要加head?
             if current.next:
                 heapq.heappush(h, (current.next.val, counter, current.next))
                 counter += 1
