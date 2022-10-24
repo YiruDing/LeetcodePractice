@@ -14,7 +14,7 @@ class Solution:
                 res += s[i]
                 if (r > 0 and r < numRows - 1
                         and (i + increment - 2 * r) < len(s)):
-                    # r本來在0~numRows - 1的範圍，r > 0 and r < numRows - 1
+                    # r本來在0~numRows - 1的範圍，但如果往上或往下走，間隔會變小，放進res的字會變多...
                     res += s[i + increment - 2 * r]
                     # V shape...decrease by 2 each time
 

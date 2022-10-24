@@ -1,8 +1,3 @@
-# 下個月就可以看到題目囉！
-# -1: wall
-# 0:gate
-# inf：empty rooms
-
 
 class Solution:
     """
@@ -13,7 +8,7 @@ class Solution:
     def walls_and_gates(self, rooms: List[List[int]]) -> None:
         ROWS, COLS = len(rooms), len(rooms[0])
         visit = set()
-        q = deque()
+        q = collections.deque()
 
         # FIFO
 
