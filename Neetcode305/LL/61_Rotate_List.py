@@ -13,6 +13,7 @@ class Solution:
         # Get length
         length, tail = 1, head
         while tail.next:
+            # 10/24 不是tail
             tail = tail.next
             length += 1
 
@@ -23,6 +24,7 @@ class Solution:
         # Move to the pivot and rotate
         cur = head
         for i in range(length - k - 1):
+            # 不是length - k ＋ 1
             cur = cur.next
         newHead = cur.next
         # 抓到新起始點
