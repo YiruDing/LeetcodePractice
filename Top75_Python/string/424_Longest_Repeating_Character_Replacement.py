@@ -9,7 +9,9 @@ class Solution:
             count[s[right]]=1+count.get(s[right],0)
             while(right-left+1)-max(count.values())>k:
                 # Which means the situation that we are not able to make a change
+                # !!max(count.values())
                 count[s[left]]-=1
+                # ！！！
                 left+=1
             
             result=max(result,right-left+1)

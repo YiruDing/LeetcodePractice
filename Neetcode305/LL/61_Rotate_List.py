@@ -22,7 +22,7 @@ class Solution:
             return head
 
         # Move to the pivot and rotate
-        cur = head
+        cur = heads
         for i in range(length - k - 1):
             # 不是length - k ＋ 1
             cur = cur.next
@@ -34,4 +34,3 @@ class Solution:
         # 尾巴再跟頭接上...這樣豈非沒完沒了？JM:不會，上面做法直接改變原始的ＬＬ了
 
         return newHead
-
