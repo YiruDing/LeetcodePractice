@@ -51,7 +51,9 @@ class Solution:
         # 1)Reach node at position "left"
         leftPrev, cur = dummy, head
         for i in range(left - 1):
+            # 10/30 !!!left-1!!!
             leftPrev, cur = cur, cur.next
+        # 不是 lPrev.next=cur.next<--這樣node會跳掉第一個值！
 
         # Now cur="left",leftPrev="node before left"
         # 2)reverse from left to right
@@ -59,6 +61,7 @@ class Solution:
         for i in range(right - left + 1):
             tmpNext = cur.next
             cur.next = prev
+            # Change the pinter
             prev = cur
             cur = tmpNext
 

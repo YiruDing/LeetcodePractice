@@ -17,6 +17,7 @@ class Solution:
                 r = m - 1
             else:
                 i = m
+                # i = m要放在這裡！
                 if leftBias:
                     r = m - 1
                 else:
