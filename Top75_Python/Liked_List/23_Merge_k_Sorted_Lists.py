@@ -63,6 +63,7 @@ class Solution:
             # heapq.heappush(heap, item)
             #(current.next.val, counter, current.next)
             counter += 1
+            
         head = None
         while h:
             _, _, current = heapq.heappop(h)

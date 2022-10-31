@@ -1,8 +1,8 @@
 # Definition for singly-linked list.
-# class ListNode:
-#     def __init__(self, val=0, next=None):
-#         self.val = val
-#         self.next = next
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
 
 
 # O(n) time O(1)space
@@ -18,7 +18,7 @@ class Solution:
         # cur = head
         
         while head:
-             if head.val<x:
+            if head.val<x:
                  left.next=head
                  left=left.next
                 #  !!!Update the node!!!
