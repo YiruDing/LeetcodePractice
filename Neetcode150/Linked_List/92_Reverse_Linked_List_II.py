@@ -51,7 +51,7 @@ class Solution:
         # 1)Reach node at position "left"
         leftPrev, cur = dummy, head
         for i in range(left - 1):
-            # 10/30 !!!left-1!!!
+            # 10/30,11/3 !!!left-1!!!
             leftPrev, cur = cur, cur.next
         # 不是 lPrev.next=cur.next<--這樣node會跳掉第一個值！
 

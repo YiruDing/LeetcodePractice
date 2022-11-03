@@ -47,7 +47,43 @@ class Solution:
 
         return totalWaterTrapped
     
-# JS解法
+# https://leetcode.com/problems/trapping-rain-water/discuss/17575/Python-solutions-O(n)-space-and-O(1)-space
+# The water we trapped depends on the left side and right side which has the max height,
+# We keep the left side and right side until we find a higher side
+
+class Solution:
+# @param A, a list of integers
+# @return an integer
+def trap(self, arr):
+    height, left, right, water = [], 0, 0, 0
+    for i in arr:
+        left = max(left, i)
+        height.append(left)
+    height.reverse()
+    for n, i in enumerate(reversed(arr)):
+        right = max(right, i)
+        water += min(height[n], right) - i
+    return water
+# O(1)
+
+class Solution:
+# @param A, a list of integers
+# @return an integer
+ def trap(self, arr):
+    left = right = water = 0
+    i, j = 0, len(arr)-1
+    while i <= j:
+        left, right = max(left, arr[i]), max(right, arr[j])
+        while i <= j and arr[i] <= left <= right:
+            water += left - arr[i]
+            i += 1
+        while i <= j and arr[j] <= right <= left:
+            water += right - arr[j]
+            j -= 1
+    return water
+
+    
+# JS解法(bruce force)
  const elevationArray = [0, 1, 0, 2, 1, 0, 3, 1, 0, 1, 2]
 
 const getTrappedRainwater = function(heights) {
@@ -75,5 +111,43 @@ const getTrappedRainwater = function(heights) {
 
   return totalWater;
 }
+
+console.log(getTrappedRainwater(elevationArray));
+
+# JS解法(改良版)
+# 1. Identify the pointer with the lesser value
+# 2. Is this pointer value greater than or equal to max on that side
+#   yes -> update max on that side
+#   no -> get water for pointer, add to total
+# 3. move pointer inwards
+# 4. repeat for other pointer
+#  */
+
+const getTrappedRainwater = function(heights) {
+
+  let left = 0, right = heights.length - 1, totalWater = 0, maxLeft = 0, maxRight = 0;
+  
+  while(left < right) {
+    if(heights[left] <= heights[right]) {
+      if(heights[left] >= maxLeft) { 
+        maxLeft = heights[left]
+      } else { 
+        totalWater += maxLeft - heights[left];
+      }
+      left++;
+    } else {
+      if(heights[right] >= maxRight) {
+          maxRight = heights[right];
+      } else {
+          totalWater += maxRight - heights[right];
+      }
+        
+      right--;
+    }
+  }
+
+  return totalWater;
+}
+
 
 console.log(getTrappedRainwater(elevationArray));
