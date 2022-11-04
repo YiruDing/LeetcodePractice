@@ -6,6 +6,7 @@ class Solution:
 
         for n in nums:
             count[n] = 1 + count.get(n, 0)
+
         for n, c in count.items():
             freq[c].append(n)
 # 長這樣 [[], [3], [2], [1], [], [], []]
@@ -18,6 +19,7 @@ class Solution:
                 # result: [1, 2]
 
                 if len(result) == k:
+                    # 11/3: Not len(freq)!
                     return result
 
 
