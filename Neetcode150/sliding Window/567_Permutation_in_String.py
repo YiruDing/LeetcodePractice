@@ -16,14 +16,14 @@ class Solution:
         left = 0
         for right in range(len(s1), len(s2)):
             if matches == 26: return True
-
+            #  increment the window
             index = ord(s2[right]) - ord('a')
             s2Count[index] += 1
             if s1Count[index] == s2Count[index]:
                 matches += 1
             elif s1Count[index] + 1 == s2Count[index]:
                 matches -= 1
-
+#  decrement the window
             index = ord(s2[left]) - ord('a')
             s2Count[index] -= 1
             if s1Count[index] == s2Count[index]:
@@ -69,8 +69,24 @@ class Solution:
                 # left: 5
                 # cnt2: Counter({'a': 1, 'b': 1, 'e': 0, 'f': 0, 'g': 0, 'h': 0, 'm': 0})
                 # left: 6
-            if r - l + 1 == len(
-                    p):  # If we already filled enough `p.length()` chars
+            if r - l + 1 == len(p):
+                # If we already filled enough `p.length()` chars
                 return True
 
         return False
+
+
+# 3 solution
+def checkInclusion(self, s1: str, s2: str) -> bool:
+    cntr, w = Counter(s1), len(s1)
+
+    for i in range(len(s2)):
+        if s2[i] in cntr:
+            cntr[s2[i]] -= 1
+        if i >= w and s2[i - w] in cntr:
+            cntr[s2[i - w]] += 1
+
+        if all([cntr[i] == 0 for i in cntr]):  # see optimized code below
+            return True
+
+    return False
