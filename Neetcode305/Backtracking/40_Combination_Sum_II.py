@@ -25,7 +25,7 @@ class Solution:
                 cur.append(candidates[i])
                 backtrack(cur, i + 1, target - candidates[i])
                 cur.pop()
-
+                #    update prev
                 prev = candidates[i]
 
         backtrack([], 0, target)

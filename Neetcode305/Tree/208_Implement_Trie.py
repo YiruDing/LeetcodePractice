@@ -15,7 +15,9 @@ class Trie:
         for c in word:
             if c not in cur.children:
                 cur.children[c] = TrieNode()
+                #11/24: 不是cur.children.append(c)
             cur = cur.children[c]
+            
         cur.endOfWord = True
 
     def search(self, word: str) -> bool:

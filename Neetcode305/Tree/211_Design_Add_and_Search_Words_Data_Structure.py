@@ -21,14 +21,16 @@ class WordDictionary:
 
     def search(self, word: str) -> bool:
 
-        def dfs(j, root):
+        def dfs(start, root):
             cur = root
-
-            for i in range(j, len(word)):
+            # ！！dfs的parameter非j和任意字！
+            for i in range(start, len(word)):
                 c = word[i]
 
                 if c == '.':
                     for child in cur.children.values():
+                        # 11/24: values!!
+                        # 可否直接寫cur.children??
                         if dfs(i + 1, child):
                             return True
                     return False
