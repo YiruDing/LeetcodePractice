@@ -32,6 +32,7 @@ class Solution:
         backtrack(0, 0)
         return res
 
+
 # 10/19問題：為什麼prin出來，竟然是先close而非open??
 
 # n=3

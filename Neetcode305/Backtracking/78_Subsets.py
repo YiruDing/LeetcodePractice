@@ -9,6 +9,7 @@ class Solution:
         def dfs(i):
             if i >= len(nums):
                 result.append(subset.copy())
+                # 11/25 記得append!
                 return
             # 也可以寫作return result
 

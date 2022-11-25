@@ -4,6 +4,8 @@ class Solution:
         res = []
         nums.sort()
 
+        # 11/25 要sort!!
+
         def backtrack(i, subset):
             if i == len(nums):
                 res.append(subset[::])
@@ -17,8 +19,10 @@ class Solution:
 
             #Avoit the duplicates
             while i + 1 < len(nums) and nums[i] == nums[i + 1]:
+                # 不是nums[i - 1] == nums[i]??因為已經append過，再處理沒意義了，只能處理未來的那個數字
                 i += 1
             backtrack(i + 1, subset)
+            # indetation注意！ 還有 i + 1
 
         backtrack(0, [])
         return res

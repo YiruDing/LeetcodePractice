@@ -1,3 +1,5 @@
+# First differing char
+# If word A is prefix of word B, word B must be AFTER word A
 class Solution:
 
     def isAlienSorted(self, words: List[str], order: str) -> bool:
@@ -8,6 +10,7 @@ class Solution:
 
             for j in range(len(w1)):
                 if j == len(w2):
+                    # 如果w2比w1短，意味w2 is the prefix of w1
                     return False
 
                 if w1[j] != w2[j]:

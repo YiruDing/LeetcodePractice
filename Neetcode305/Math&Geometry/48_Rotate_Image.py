@@ -41,6 +41,7 @@ class Solution:
         #         while result:
         #             result.append()
 
+
 # Input: [[1,2,3,4],[5,6,7,8],[9,10,11,12],[13,14,15,16]]
 # left起始值為0,right為3,i為0,1,2,
 # topLeft位置分別為[0][0],[0][2],[0][1]
