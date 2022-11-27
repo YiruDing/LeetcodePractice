@@ -17,6 +17,9 @@ class Solution:
                     if orderInd[w2[j]] < orderInd[w1[j]]:
                         return False
                     break
+                # 記得break!
+                # https://www.zhihu.com/question/37076998
+
         return True
 
 
