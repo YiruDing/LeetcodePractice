@@ -17,6 +17,7 @@ class Solution:
 
         root.left = self.mergeTrees(root1.left if root1 else None,
                                     root2.left if root2 else None)
+        # 12/1不是 if root.left!!!!如果root.left ＝＝ Ｎone, mergeTrees會處理
         root.right = self.mergeTrees(root1.right if root1 else None,
                                      root2.right if root2 else None)
         return root

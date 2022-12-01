@@ -42,3 +42,4 @@ class Solution(object):
             return root.val == sum:
                 
         return self.hasPathSum(root.left, sum - root.val) or self.hasPathSum(root.right, sum - root.val)
+    # !!!12/1 .val!!!
