@@ -15,12 +15,13 @@ class Solution:
             for i in range(qLen):
                 node = queue.popleft()
                 if node:
+                    # 勿忘line17!
                     level.append(node.val)
                     queue.append(node.left)
                     queue.append(node.right)
             if level:
                 # To check the level is not empty
-            # May29: Do it AFTER the for loop!!
+                # May29: Do it AFTER the for loop!!
                 result.append(level)
 
         return result
