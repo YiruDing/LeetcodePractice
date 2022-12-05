@@ -1,3 +1,4 @@
+# 12/3 本題難處在於座標和數字中間不斷進行換算....
 class Solution:
 
     def snakesAndLadders(self, board: List[List[int]]) -> int:
@@ -13,18 +14,21 @@ class Solution:
             c = (square - 1) % length
             if r % 2:
                 c = length - 1 - c
+                # 12/3: 是r % 2！！
             return [r, c]
 
         q = deque()
-        q.append([1, 0])  #[sqaure, moves]
+        q.append([1, 0])  #[sqaure, moves（How many steps it take to get here）]
         visit = set()
+        # 12/3 要存nextSquare！！！
         while q:
             square, moves = q.popleft()
 
             for i in range(1, 7):
                 nextSquare = square + i
-                # !!??
+                # 紀錄擲骰子可能出現的所有可能
                 r, c = intToPos(nextSquare)
+                #12/3 ;!!!算出"接下來"可能的位置
                 if board[r][c] != -1:
                     nextSquare = board[r][c]
                 if nextSquare == length * length:
