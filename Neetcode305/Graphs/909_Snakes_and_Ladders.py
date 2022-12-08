@@ -12,6 +12,7 @@ class Solution:
         def intToPos(square):
             r = (square - 1) // length
             c = (square - 1) % length
+            # 12/5 length!!
             if r % 2:
                 c = length - 1 - c
                 # 12/3: 是r % 2！！
@@ -26,7 +27,7 @@ class Solution:
 
             for i in range(1, 7):
                 nextSquare = square + i
-                # 紀錄擲骰子可能出現的所有可能
+                # !!12/5 紀錄擲骰子可能出現的所有可能
                 r, c = intToPos(nextSquare)
                 #12/3 ;!!!算出"接下來"可能的位置
                 if board[r][c] != -1:

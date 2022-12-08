@@ -24,6 +24,7 @@ class Solution:
         # indetation!!
 
         q = deque()
+        # deque()!
         q.append(['0000', 0])  #[lock,turns]
         # This is the starting point
         visit = set(deadends)
