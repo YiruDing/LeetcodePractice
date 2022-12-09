@@ -6,6 +6,8 @@ class Solution:
             if not node:
                 return True
             if not (node.val < right and node.val > left):
+                # 12/8 不是root.left.val！！
+                # 為何不能是 if node.val < left or node.val > right？因為這沒處理到left或right == root.val的狀況
                 return False
             return (valid(node.left, left, node.val)
                     and valid(node.right, node.val, right))

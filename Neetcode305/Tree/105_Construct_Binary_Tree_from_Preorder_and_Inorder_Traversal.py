@@ -17,6 +17,7 @@ class Solution:
         mid = inorder.index(preorder[0])
         # 分界在root,即preorder[0]
         # list.index(x[, start[, end]])
+        # 12/9 !!inorder.index,這個index在切分preorder時還是有價值的，因為左邊的數目是固定的啊！
         root.left = self.buildTree(preorder[1:mid + 1], inorder[:mid])
         root.right = self.buildTree(preorder[mid + 1:], inorder[mid + 1:])
 

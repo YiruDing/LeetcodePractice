@@ -12,11 +12,14 @@ class Solution:
                 return 0
             res = 1 if node.val >= maxVal else 0
             maxVal = max(maxVal, node.val)
+            # 12/8 maxVal 後於res初始值
             res += dfs(node.left, maxVal)
             res += dfs(node.right, maxVal)
             return res
 
         return dfs(node, node.val)
+
+    # not dfs(node, 0)
 
 
 #待修的my solution
