@@ -7,23 +7,29 @@ class Solution:
         # 当key不存在时，返回的是list的默认值[ ]
         # The functionality of both dictionaries and defaultdict are almost same except for the fact that defaultdict never raises a KeyError. It provides a default value for the key that does not exists.
         # https://www.geeksforgeeks.org/defaultdict-in-python/
-        for u, v, w in times:
-            edges[u].append((v, w))
+        for s, d, t in times:
+            edges[s].append((d, t))
+            # 12/15 不是([w,v])
+            # Get every single outgoing neighbor
 
-        minHeap = [(0, k)]  #時間,起始點
+        minHeap = [(0, k)]  #時間,
+        # 12/15 不是([0, k])！
         visit = set()
-        t = 0
+        time = 0
         while minHeap:
-            w1, n1 = heapq.heappop(minHeap)
-            if n1 in visit:
+            # 先確認目前所在地及需要的時間
+            t1, s1 = heapq.heappop(minHeap)
+            if s1 in visit:
                 continue
-            visit.add(n1)
-            t = max(t, w1)
+            visit.add(s1)
+            time = t1
 
-            for n2, w2 in edges[n1]:
-                if n2 not in visit:
-                    heapq.heappush(minHeap, (w1 + w2, n2))
-        return t if len(visit) == n else -1
+            # 處理相鄰地點
+            for s2, t2 in edges[s1]:
+                if s2 not in visit:
+                    # 12/15 記得這個！
+                    heapq.heappush(minHeap, (t1 + t2, s2))
+        return time if len(visit) == n else -1
 
 
 # Most voted solution
@@ -40,7 +46,7 @@ class Solution:
                 t[node] = time
                 for v, w in adj[node]:
                     heapq.heappush(q, (time + w, v))
-        return max(t.values()) if len(t) == N else -1
+        return max(t.values()) if len(time) == N else -1
 
 
 # Queue
