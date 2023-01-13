@@ -11,7 +11,7 @@ class Solution:
         N = len(points)
 
         adj = {i: [] for i in range(N)}  #i:list of [cost,node]
-# 1. Create the edges
+        # 1. Create the edges
         for i in range(N):
             x1, y1 = points[i]
             for j in range(i + 1, N):
