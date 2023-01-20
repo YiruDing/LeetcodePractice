@@ -12,12 +12,16 @@ class Solution:
         for i in range(1, min_len+1):
             prefix = strs[0][:i]
             # !!!strs[0][:i]!!!
+            # 1/18: not strs[i][:j]
             for s in strs:             
                 if s[:i] != prefix:
                     return result
             result = prefix
+            # 不是這樣：
+            #   result = prefix
 
         return result 
+    dictionary = {I : 1 ; V : 5 ; X : 10 ; L : 50 ; }
 
 # 2 
 class Solution:
