@@ -11,6 +11,7 @@ class TimeMap:
     def get(self, key: str, timestamp: int) -> str:
         res = ""
         values = self.store.get(key, [])
+        # 1/20!!!
 
         l, r = 0, len(values) - 1
         while l <= r:
