@@ -37,3 +37,18 @@ class Solution:
                 count -= 1
             result = max(result, count)
         return result
+# 另解
+ def minMeetingRooms(self, intervals):
+        intervals.sort(key = lambda x: x[0])    # sort the intervals
+        res = 0
+        heap, heap_size = [], 0         # heap of meeting ending times
+        for interval in intervals:      # move the vertical line from left to right
+		    # pop all ended meetings from the heap
+            while heap and heap[0] <= interval[0]:
+                # heap[0]是最近的end time
+                heapq.heappop(heap)
+                heap_size -= 1
+            heapq.heappush(heap, interval[1])
+            heap_size += 1
+            res = max(res, heap_size)
+        return res
