@@ -6,12 +6,19 @@ class Solution:
         queue = collections.deque()
         queue.append(root)
         # remember to append the root
+        print('queue:', queue)
+        # queue: deque([TreeNode{val: 3, left: TreeNode{val: 9, left: None, right: None}, right: TreeNode{val: 20, left: TreeNode{val: 15, left: None, right: None}, right: TreeNode{val: 7, left: None, right: None}}}])
 
         while queue:
             qLen = len(queue)
             # Since the queue is not empty,we got the number of queue...
             # To make sure we run one level at a time
             level = []
+            print('lenQ:', lenQ)
+            # lenQ: 1
+            # lenQ: 2
+            # lenQ: 4
+            # lenQ: 4
             for i in range(qLen):
                 node = queue.popleft()
                 if node:
