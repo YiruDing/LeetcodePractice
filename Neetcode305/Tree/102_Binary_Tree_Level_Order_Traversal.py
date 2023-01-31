@@ -14,11 +14,7 @@ class Solution:
             # Since the queue is not empty,we got the number of queue...
             # To make sure we run one level at a time
             level = []
-            print('lenQ:', lenQ)
-            # lenQ: 1
-            # lenQ: 2
-            # lenQ: 4
-            # lenQ: 4
+            
             for i in range(qLen):
                 node = queue.popleft()
                 if node:
