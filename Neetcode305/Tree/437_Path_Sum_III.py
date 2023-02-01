@@ -1,4 +1,4 @@
-# 待debug
+#line 10 - 32 待debug
 
 
 # Definition for a binary tree node.
@@ -60,18 +60,27 @@ class Solution(object):
 
         rec = {0: 1}
         return dfs(root, 0, sum)
-    
+
+
 # https://leetcode.com/problems/path-sum-iii/solutions/91892/python-solution-with-detailed-explanation/
 # Brute Force Solution
 
-The simplest solution is to traverse each node (preorder traversal) and then find all paths which sum to the target using this node as root.
-The worst case complexity for this method is N^2.
-If we have a balanced tree, we have the recurrence: T(N) = N + 2T(N/2). This is the merge sort recurrence and suggests NlgN.
+
+# 3 這個我懂
+# The simplest solution is to traverse each node (preorder traversal) and then find all paths which sum to the target using this node as root.
+# The worst case complexity for this method is N^2.
+# If we have a balanced tree, we have the recurrence: T(N) = N + 2T(N/2). This is the merge sort recurrence and suggests NlgN.
 class SolutionBruteForce(object):
+
     def find_paths(self, root, target):
         if root:
-            return int(root.val == target) + self.find_paths(root.left, target-root.val) + self.find_paths(root.right, target-root.val)
+            return int(root.val == target) + self.find_paths(
+                root.left, target - root.val) + self.find_paths(
+                    root.right, target - root.val)
+            # 1/31 記得self!
         return 0
+
+# 丁案：int(root.val == target) 為布林值
 
     def pathSum(self, root, sum):
         """
@@ -80,29 +89,42 @@ class SolutionBruteForce(object):
         :rtype: int
         """
         if root:
-            return self.find_paths(root, sum) + self.pathSum(root.left, sum) + self.pathSum(root.right, sum)
+            return self.find_paths(root, sum) + self.pathSum(
+                root.left, sum) + self.pathSum(root.right, sum)
         return 0
 
 
-class Solution(object):
-    def helper(self, root, target, so_far, cache):
-        if root:
-            complement = so_far + root.val - target
-            if complement in cache:
-                self.result += cache[complement]
-            cache.setdefault(so_far+root.val, 0)
-            cache[so_far+root.val] += 1
-            self.helper(root.left, target, so_far+root.val, cache)
-            self.helper(root.right, target, so_far+root.val, cache)
-            cache[so_far+root.val] -= 1
-        return
+# 4
+# https://leetcode.com/problems/path-sum-iii/solutions/2366508/python-easy-to-understand/
 
-    def pathSum(self, root, sum):
-        """
-        :type root: TreeNode
-        :type sum: int
-        :rtype: int
-        """
-        self.result = 0
-        self.helper(root, sum, 0, {0:1})
-        return self.result
+class Solution:
+
+    def pathSum(self, root: Optional[TreeNode], targetSum: int) -> int:
+        # early termination
+        if not root:
+            return 0
+
+        # function to find sum counts for a given starting node using DFS
+        def dfs(root, tgt):
+            count = 0
+            if root is None:
+                return count
+            if root.val == tgt:
+                count += 1
+            if root.left is not None:
+                count += dfs(root.left, tgt - root.val)
+            if root.right is not None:
+                count += dfs(root.right, tgt - root.val)
+            return count
+
+        # using BFS, get count of paths summing to total for each starting node
+        total_count, q = 0, [root]
+        while q:
+            for node in q:
+                total_count += dfs(node, targetSum)
+            q = [
+                child for node in q for child in (node.left, node.right)
+                if child is not None
+            ]
+
+        return total_count

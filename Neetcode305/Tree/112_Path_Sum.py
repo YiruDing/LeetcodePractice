@@ -7,6 +7,8 @@
 
 # 題目不是 binary search tree喔！因為沒有按照大小排，必得遍歷所有node
 
+# https://www.youtube.com/watch?v=LSKQyOz_P8I
+# Neetcode 6:14 Time Complexity O(n), Space complexity will becth height of the tree,若是a balanced tree 可為O(log n)，最差是O(n)
 
 # Inorder DFS
 class Solution:
