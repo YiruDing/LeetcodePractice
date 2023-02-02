@@ -91,11 +91,13 @@ class SolutionBruteForce(object):
         if root:
             return self.find_paths(root, sum) + self.pathSum(
                 root.left, sum) + self.pathSum(root.right, sum)
+            # 2/1 不是targetSum - root.val！每個node都可以是個新開始
         return 0
 
 
 # 4
 # https://leetcode.com/problems/path-sum-iii/solutions/2366508/python-easy-to-understand/
+
 
 class Solution:
 
