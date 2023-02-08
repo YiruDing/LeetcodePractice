@@ -1,4 +1,5 @@
 # Leetcode 我比較看得懂的答案
+# Time: O(n)
 class Solution(object):
 
     def trap(self, height):
@@ -12,6 +13,7 @@ class Solution(object):
 
         while left < right:
             if height[left] < height[right]:
+              # 2/6 不是left_max < right_max!!
                 if height[left] < left_max:
                     area += left_max - height[left]
                 else:
@@ -114,6 +116,8 @@ const getTrappedRainwater = function(heights) {
 
 console.log(getTrappedRainwater(elevationArray));
 
+# Zero影片
+
 # JS解法(改良版)
 # 1. Identify the pointer with the lesser value
 # 2. Is this pointer value greater than or equal to max on that side
@@ -148,6 +152,3 @@ const getTrappedRainwater = function(heights) {
 
   return totalWater;
 }
-
-
-console.log(getTrappedRainwater(elevationArray));
