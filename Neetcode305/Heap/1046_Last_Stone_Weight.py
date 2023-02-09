@@ -13,12 +13,15 @@ class Solution:
         heapq.heapify(stones)
 
         while len(stones) > 1:
+            # 2/9 必須這樣，不然second會溢出範圍
             first = heapq.heappop(stones)
             second = heapq.heappop(stones)
             if second > first:
                 heapq.heappush(stones, first - second)
+                # 2/9 first - second才會是負數啊！
                 # heapq.heappush(heap, item)
         stones.append(0)
+        # 2/9 亦可為heapq.heappush(stone_heap, 0)
         # "At the end,there is at most 1 stone left.Return its weight"
         # To handle the eade case
         # (that the stones is empty)
