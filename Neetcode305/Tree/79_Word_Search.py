@@ -61,6 +61,7 @@ class Solution:
 
         visited[(i, j)] = True
         res = self.getWords(board, word, i, j + 1, visited, pos + 1) \
+            # 2/10 '\' 為續行符號，用來處理過長的code...後面不能加任何東西
                 or self.getWords(board, word, i, j - 1, visited, pos + 1) \
                 or self.getWords(board, word, i + 1, j, visited, pos + 1) \
                 or self.getWords(board, word, i - 1, j, visited, pos + 1)

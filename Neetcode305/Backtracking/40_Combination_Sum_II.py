@@ -8,7 +8,7 @@ class Solution:
         def backtrack(cur, pos, target):
             if target == 0:
                 result.append(cur.copy())
-                # 2/9 這個很重要！
+                # 2/9 2/10 這個很重要！後面才可以繼續用
             if target < 0:
                 return
 
@@ -29,6 +29,7 @@ class Solution:
                 backtrack(cur, i + 1, target - candidates[i])
                 cur.pop()
                 #    update prev
+                # ！！！！！記得i + 1
                 prev = candidates[i]
                 # !!!!!!!!!!!!!!!!!!!!!!!!!2/9 記得這行
 

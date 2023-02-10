@@ -9,14 +9,14 @@ class Solution:
         for i in range(k + 1):
             tmpPrices = prices.copy()
 
-            for s, d, p in flights:
-                if prices[s] == float("inf"):
+            for source, target, price in flights:
+                if prices[source] == float("inf"):
                     # 意味無法reach this source node
                     continue
-                if prices[s] + p < tmpPrices[d]:
-                    tmpPrices[d] = prices[s] + p
+                if prices[source] + price < tmpPrices[target]:
+                    tmpPrices[target] = prices[source] + price
             prices = tmpPrices
-            # June9：pay attention on the indentation
+            # June 9：pay attention on the indentation
         return -1 if prices[dst] == float('inf') else prices[dst]
 
 
@@ -95,4 +95,5 @@ class Solution:
         return -1
 
 
-# Python heapq doesn't support update heap node's weight. But if you implement your own heap structure and support that function, you can maintain a n-size heap and time complexity is O((m + n)logn). m is number of edges and n is number of nodes. And it can be improved to O(m + nlogn) with a Fibonacci heap where a delete min costs logn but an update cost costs constant time.
+# Python heapq doesn't support update heap node's weight. 
+# But if you implement your own heap structure and support that function, you can maintain a n-size heap and time complexity is O((m + n)logn). m is number of edges and n is number of nodes. And it can be improved to O(m + nlogn) with a Fibonacci heap where a delete min costs logn but an update cost costs constant time.
