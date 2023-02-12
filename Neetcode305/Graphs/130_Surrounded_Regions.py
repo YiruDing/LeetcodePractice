@@ -46,6 +46,7 @@ class Solution:
 
 
 #8/15 solution:
+# Reverse Thinking
 class Solution:
 
     def solve(self, board: List[List[str]]) -> None:
@@ -70,6 +71,7 @@ class Solution:
             for c in range(COLS):
                 if board[r][c] == "O" and (r in [0, ROWS - 1]
                                            or c in [0, COLS - 1]):
+                    # 2/11 限制其範圍，很重要！
                     dfs(r, c)
 
         for row in range(ROWS):
