@@ -1,4 +1,6 @@
 # 10:12
+# 2/10 Time complexity:O(n * m * dfs的時間)
+# dfs if 4 to the power of len(word)，因為每次進去都會再開四隻分岔...
 class Solution:
 
     def exist(self, board: List[List[str]], word: str) -> bool:
@@ -21,17 +23,18 @@ class Solution:
             # 7:45 the reason of cleaning up (r,c)
             return result
 
-    # To prevent TLE,reverse the word if frequency of the first letter is more than the last letter's
-
-        count = defaultdict(int, sum(map(Counter, board), Counter()))
-        if count[word[0]] > count[word[-1]]:
-            word = word[::-1]
+    # To prevent TLE（Time Limit Exceeded）,reverse the word if frequency of the first letter is more than the last letter's
+    #    2/10 以下三行可以省略，只是用來省時間的花招
+        # count = defaultdict(int, sum(map(Counter, board), Counter()))
+        # 2/10 sum的語法：sum(iterable, start)
+        # if count[word[0]] > count[word[-1]]:
+        #     word = word[::-1]
 
         for r in range(ROWS):
             for c in range(COLS):
                 if dfs(r, c, 0): return True
-                # ???不能直接return dfs(r, c, 0)
-
+                # 2/10 不能直接return dfs(r, c, 0)，不然可能會錯過後面的機會
+                # 2/10 放0即可
         return False
 
 

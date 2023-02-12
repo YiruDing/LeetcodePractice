@@ -12,6 +12,7 @@ class TrieNode:
                 cur.children[c] = TrieNode()
             # if it already exist...
             cur = cur.children[c]
+            # move the pointer
         cur.isWord = True
 
 
@@ -28,6 +29,7 @@ class Solution:
         def dfs(r, c, node, word):
             if (r < 0 or c < 0 or r == ROWS or c == COLS
                     or board[r][c] not in node.children or (r, c) in path):
+                # board[r][c] not in node.children意即其不在此trie上面
                 return
 
             path.add((r, c))

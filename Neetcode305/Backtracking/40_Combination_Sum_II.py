@@ -1,3 +1,22 @@
+# 2/11 你值得更好的解答
+class Solution(object):
+    def combinationSum2(self, candidates, target):
+        ret = []
+        self.dfs(sorted(candidates), target, 0, [], ret)
+        return ret
+    
+    def dfs(self, nums, target, idx, path, ret):
+        if target <= 0:
+            if target == 0:
+                ret.append(path)
+            return 
+        for i in range(idx, len(nums)):
+            if i > idx and nums[i] == nums[i-1]:
+                continue
+            self.dfs(nums, target-nums[i], i+1, path+[nums[i]], ret)
+            
+# Neetcode
+
 class Solution:
 
     def combinationSum2(self, candidates: List[int],
@@ -8,7 +27,7 @@ class Solution:
         def backtrack(cur, pos, target):
             if target == 0:
                 result.append(cur.copy())
-                # 2/9 2/10 這個很重要！後面才可以繼續用
+                # 2/9 2/10 這個很重要！後面line 50(應該是他吧＠＠)才可以繼續用
             if target < 0:
                 return
 

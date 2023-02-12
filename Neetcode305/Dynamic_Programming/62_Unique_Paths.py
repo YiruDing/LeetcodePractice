@@ -43,11 +43,11 @@ class Solution:
         row = [1] * n
         # 為了之後能update和return，有必要在外面宣告一個值
         for i in range(m - 1):
-            # 比m少一次
+            # 剩下要跑的次數為m-1
             newRow = [1] * n
             for j in range(n - 2, -1, -1):
                 newRow[j] = newRow[j + 1] + row[j]
-                # newRow[j + 1]為右方的值 row[j]為下方的值
+                # newRow[j + 1]為右方的值 row[j]為下方的值,the value below
             row = newRow
             # 2/9 用這個來儲存新算出的值
         return row[0]
