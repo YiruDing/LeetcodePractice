@@ -7,6 +7,9 @@ class Solution:
         prices[src] = 0
 
         for i in range(k + 1):
+            # 2/12 為什麼是 k+1 呢？ at most k stops...不是算0到k -1 嗎？
+            # ＪＭ：因為是k個中繼點，加頭尾其實有k+2站，所以要跑k+1次
+
             tmpPrices = prices.copy()
 
             for source, target, price in flights:
@@ -15,6 +18,7 @@ class Solution:
                     continue
                 if prices[source] + price < tmpPrices[target]:
                     tmpPrices[target] = prices[source] + price
+                # 2/12 上面兩行很重要！一次次地調整過去和現在的數據
             prices = tmpPrices
             # June 9：pay attention on the indentation
         return -1 if prices[dst] == float('inf') else prices[dst]
@@ -39,7 +43,7 @@ class Solution:
 
 
 #Another BFS
-
+# 2/12 TLE...QQ
 
 class Solution1(object):
 
@@ -50,6 +54,7 @@ class Solution1(object):
 
         for u, v, w in flights:
             graph[u].append((w, v))
+            
         q.append((src, 0, 0))
         while q:
             city, stops, price = q.popleft()

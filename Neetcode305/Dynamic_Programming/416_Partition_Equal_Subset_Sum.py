@@ -4,6 +4,8 @@ class Solution:
         t = sum(nums) / 2
         P = set([nums[0]])
         # 因為只要有一個值即可，這樣能省時間
+        # 2/13 不是省時間啦！
+        # JM:這樣沒法進去for number in list(P)的loop啊！
         for x in nums[1:]:
             for y in list(P):
                 # set儲存沒有按照順序喔，iterate應該比較麻煩...

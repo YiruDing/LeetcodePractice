@@ -17,13 +17,13 @@ class Solution:
         second = slow.next
         prev = slow.next = None
         # 不能省略 reassigning the value of 'slow.next'，
+        # 2/13ＪＭ：若非Ｎone,slow會一直指向3，之後就要處理1,2,3,4和3,4而非1,2和3,4的合併
+        # 我之前的說法： 
         # 要截斷再重逢
         # Error - Found cycle in the ListNode
         # 如果是prev  = None，最後一個會指向Ｎone
 
-        # input[1,2,3,4]，看看印出來什麼？
-        # prev: None
-        # second: ListNode{val: 3, next: ListNode{val: 4, next: None}}
+        
         while second:
             tmp = second.next
             # Store the spot

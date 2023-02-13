@@ -13,6 +13,7 @@ class Solution:
             # 雖然這裡有在確認是否重複，但未更動pointer，因此下面的left還要再set the if staement and update the pointer.
 
             l, r = i + 1, len(nums) - 1
+            # 記得上面這一行！
             while l < r:
                 # 記得while loop!
                 threeSum = n + nums[l] + nums[r]
@@ -25,6 +26,7 @@ class Solution:
                     l += 1
                     while nums[l] == nums[l - 1] and l < r:
                         l += 1
+                    # !! while !!!
                     # line19-21是在res append之後，為了開啟下一階段而進行的準備
 
         return result

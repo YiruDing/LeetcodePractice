@@ -28,6 +28,11 @@ class Solution:
             if target == 0:
                 result.append(cur.copy())
                 # 2/9 2/10 這個很重要！後面line 50(應該是他吧＠＠)才可以繼續用
+# 2/13 Why deep copy?
+# JM:1.path.append(candidates[i]) 會用到喔...而且在不同層次的影響不同！
+#     你寫一次nested recurrsion就明白了...
+#    2. 再說，如果只是shallow copy, res append的referrence會因為之後的更動而被更動！那就不能正確呈現其值了
+
             if target < 0:
                 return
 

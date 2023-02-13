@@ -19,10 +19,13 @@ class Solution:
             time1, target1 = heapq.heappop(minHeap)
             if target1 in visit:
                 continue
+            # 2/12 上面兩行記一下
+            
             visit.add(target1)
             time = max(time, time1)
             #2 處理相鄰地點
             for time2, target2 in edges[target1]:
+                # !!!!!!! 2/12 別忘這一行
                 if target2 not in visit:
                     heapq.heappush(minHeap, [time1+time2, target2])
 
@@ -76,7 +79,7 @@ class Solution:
 
 
 # ParthoBiswas007
-#  Uses simple DFS - Accepted
+#  Use the simple DFS - Accepted
 class Solution(object):
 
     def networkDelayTime(self, times, N, K):
