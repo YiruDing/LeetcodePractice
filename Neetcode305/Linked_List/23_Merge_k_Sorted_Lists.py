@@ -1,7 +1,7 @@
 # Solution in "heap"
 # https://www.youtube.com/watch?v=q5a5OiGbT6Q
-
-
+# 2/14lists本人是list 但 其內容為linked list!!
+# 這個方法太耗時，第三個方法省時多了！！
 class Solution:
 
     def mergeKLists(self,
@@ -11,6 +11,7 @@ class Solution:
 
         while len(lists) > 1:
             # We will keep on reducing it
+            
             mergedLists = []
 
             for i in range(0, len(lists), 2):
@@ -26,6 +27,7 @@ class Solution:
         tail = result
 
         while L1 and L2:
+            # 2/14 while!
             if L1.val < L2.val:
                 tail.next = L1
                 L1 = L1.next
@@ -49,7 +51,7 @@ class Solution:
 # 下解...
 # 搭配heap來找出最小值，這個我懂，但是用counter是為什麼呢？
 # 10/24 JM:這樣若遇二值相同，還可以比較下一個值，而不會卡住
-
+# 2/14 還沒看懂...
 import heapq
 
 class Solution:
@@ -77,3 +79,27 @@ class Solution:
                 current.next = h[0][2]
                 # current.next的值
         return head
+# Leetcode
+# https://xn--leetcode-eo5g5b.com/problems/merge-k-sorted-lists/solutions/10919/python-easy-to-understand-divide-and-conquer-solution/?q=python&orderBy=most_votes
+class Solution(object):
+    def mergeKLists(self, lists):
+        if not lists:
+            return None
+        if len(lists) == 1:
+            return lists[0]
+        mid = len(lists) // 2
+        l, r = self.mergeKLists(lists[:mid]), self.mergeKLists(lists[mid:])
+        return self.merge(l, r)
+    
+    def merge(self, l, r):
+        dummy = p = ListNode()
+        while l and r:
+            if l.val < r.val:
+                p.next = l
+                l = l.next
+            else:
+                p.next = r
+                r = r.next
+            p = p.next
+        p.next = l or r
+        return dummy.next

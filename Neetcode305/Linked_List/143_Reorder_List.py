@@ -38,6 +38,7 @@ class Solution:
 # second: None
 #3 Merge two halfs
         first, second = head, prev
+        # 2/13  記得second = prev!
         # a.k.a the 1st and 2nd list
         while second:
             tmp1, tmp2 = first.next, second.next
@@ -46,3 +47,4 @@ class Solution:
             second.next = tmp1
             # June 7 No more "first.next"! It's tmp1 that stored the value
             first, second = tmp1, tmp2
+            # 2/13 first不是 tmp1.next喔！

@@ -39,6 +39,8 @@ class Solution:
             for i, v in enumerate(t):
                 if v == target[i]:
                     good.add(i)
+                    # 2/14 不可寫作‘good.add(n)’!!!
+                    #      因為good是set,而數字可能重複
         return len(good) == 3
 
 

@@ -3,24 +3,26 @@ import collections
 # https://buptwc.github.io/2018/07/03/Leetcode-494-Target-Sum/
 
 # 參考解答二
-# class Solution:
+# 用cache省點時間
+# 從2^n 變成Time O（n * backtracker(total)的數量）
+class Solution:
 
-#     def findTargetSumWays(self, nums: List[int], target: int) -> int:
-#         dp = {}  # (index, total) -> # of ways
+    def findTargetSumWays(self, nums: List[int], target: int) -> int:
+        dp = {}  # (index, total) -> # of ways
 
-#         def backtrack(i, total):
-#             if i == len(nums):
-#                 return 1 if total == target else 0
-#             if (i, total) in dp:
-#                 return dp[(i, total)]
+        def backtrack(i, total):
+            if i == len(nums):
+                return 1 if total == target else 0
+            if (i, total) in dp:
+                return dp[(i, total)]
 
-#             dp[(i, total)] = backtrack(i + 1, total + nums[i]) + backtrack(
-#                 i + 1, total - nums[i])
-#             return dp[(i, total)]
+            dp[(i, total)] = backtrack(i + 1, total + nums[i]) + backtrack(
+                i + 1, total - nums[i])
+            return dp[(i, total)]
 
-#         # No need to loop!
+        # No need to loop!
 
-#         return backtrack(0, 0)
+        return backtrack(0, 0)
 
 # A better one
 # https://leetcode.com/problems/target-sum/discuss/97439/JavaPython-Easily-Understood
@@ -31,8 +33,7 @@ class Solution:
     def findTargetSumWays(self, nums, target):
 
         count = collections.Counter({0: 1})
-        print("count: ", count)
-        # count:  Counter({0: 1})
+        
         for x in nums:
             step = collections.Counter()
             # print("step: ", step)
@@ -40,8 +41,7 @@ class Solution:
                 step[y + x] += count[y]
                 step[y - x] += count[y]
             print("step: ", step)
-            # step:  Counter({1: 1, -1: 1})
-            # step:  Counter({1: 2, -1: 2})
+            
             count = step
         return count[target]
 
@@ -64,15 +64,16 @@ class Solution(object):
     def findTargetSumWays(self, nums, S):
         if not nums:
             return 0
-        dict = {nums[0]: 1, -nums[0]: 1} if nums[0] != 0 else {0: 2}
+        dic = {nums[0]: 1, -nums[0]: 1} if nums[0] != 0 else {0: 2}
 
         for i in range(1, len(nums)):
             tdict = {}
             for d in dict:
-                tdict[d + nums[i]] = tdict.get(d + nums[i], 0) + dict.get(d, 0)
-                tdict[d - nums[i]] = tdict.get(d - nums[i], 0) + dict.get(d, 0)
-            dict = tdict
-        return dict.get(S, 0)
+                tdict[d + nums[i]] = tdict.get(d + nums[i], 0) + dic.get(d, 0)
+                tdict[d - nums[i]] = tdict.get(d - nums[i], 0) + dic.get(d, 0)
+                # 2/13 不是dic[d]！
+            dic = tdict
+        return dic.get(S, 0)
 
 
 # To be fixed...
