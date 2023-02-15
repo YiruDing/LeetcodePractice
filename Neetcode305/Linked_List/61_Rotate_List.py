@@ -13,23 +13,25 @@ class Solution:
         # Get length
         length, tail = 1, head
         while tail.next:
-            # 10/24 不是tail
+            # 10/24 和 2/14 不是tail
             tail = tail.next
             length += 1
 
         k = k % length
         if k == 0:
             return head
-
-        # Move to the pivot and rotate
-        cur = heads
+        # 意思就是不用動
+        
+        #否則就是... Move to the pivot and rotate
+        cur = head
         for i in range(length - k - 1):
             # 不是length - k ＋ 1
+            # 官方解答：new head is in the position n - k, where n is a number of nodes in the list. The new tail is just before, in the position n - k - 1.
             cur = cur.next
+        # 走完之後，用newHead儲值，作為新的起始點
         newHead = cur.next
-        # 抓到新起始點
         cur.next = None
-        # 切掉準備要放在前面的一段
+        # 2/14切掉準備要放在前面的一段
         tail.next = head
         # 尾巴再跟頭接上...這樣豈非沒完沒了？JM:不會，上面做法直接改變原始的ＬＬ了
 

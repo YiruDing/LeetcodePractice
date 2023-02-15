@@ -14,10 +14,10 @@ class Solution:
         l1, l2, l3 = map(len, [s1, s2, s3])
         if l1 + l2 != l3: return False
         a = set([0])
-        # 要加[],才能interate
+        # 要加[],才能啟動interate
 
         # 接下來加入的s3就會從index 1開始排起，有助於區別s1和s2的index...
-        for (n, c) in zip(range(l3), s3):
+        for (idx, c) in zip(range(l3), s3):
             # 不是zip(l3, s3)
             # 這樣才能用到index
             b = set()
@@ -25,10 +25,10 @@ class Solution:
                 if i < l1 and s1[i] == c:
                     b.add(i + 1)
                 # 如果s1[i] == c ,b.add(i + 1) ，不會跟下一行撞號
-                if n - i < l2 and s2[n - i] == c:
+                if idx - i < l2 and s2[idx - i] == c:
                     # 不是elif
                     b.add(i)
-                # n - i始於零減零，這樣就不會有漏掉的數字
+                # idx - i始於零減零，這樣就不會有漏掉的數字
                 # 可是如果兩個都符合，不是應該兩個數字都加上去嗎？為何第40行沒加“0”呢？
                 # 來來來，張開眼睛，b[0]沒符合啊！
             if len(b) == 0: return False
@@ -36,7 +36,6 @@ class Solution:
             a = b
             # 從新的index再去traverse
         return True
-
 
 tmp = Solution()
 tmp.isInterleave("aabcc", "dbbca", "aadbbcbcac")
@@ -53,7 +52,7 @@ tmp.isInterleave("aabcc", "dbbca", "aadbbcbcac")
 
 # 9/18 待補
 # Neetcode
-
+# Cache Solution
 class Solution:
 
     def isInterleave(self, s1: str, s2: str, s3: str) -> bool:
@@ -61,6 +60,7 @@ class Solution:
             return False
 
         dp = [[False] * (len(s2) + 1) for i in range(len(s1) + 1)]
+        # + 1因為我們會需要an outside layer
         dp[len(s1)][len(s2)] = True
 
         for i in range(len(s1), -1, -1):
@@ -70,3 +70,26 @@ class Solution:
                 if j < len(s2) and s2[j] == s3[i + j] and dp[i][j + 1]#正右方為True:
                     dp[i][j] = True
         return dp[0][0]
+    
+# Recursive Solution
+class Solution:
+
+    def isInterleave(self, s1: str, s2: str, s3: str) -> bool:
+        if len(s1) + len(s2) != len(s3):
+            return False
+        
+        dp = {}
+        
+        def dfs(i, j):
+            if i == len(s1) and j == len(s2):
+                return True
+            if (i, j) in dp:
+                return dp[(i, j)]
+            
+            if i < len(s1) and s1[i] == s3[i + j] and dfs(i + 1, j):
+                return True
+            if j < len(s2) and s2[j] == s3[i + j] and dfs(i, j + 1):
+                return True
+            dp[(i, j)] = False
+            return False
+        return dfs(0, 0)
