@@ -15,7 +15,7 @@ def mergeTwoLists(self, list1, list2):
             tail.next = list2
             list2 = list2.next
         tail = tail.next
-
+        # 2/16!!!記得這個
     if list1:
         tail.next = list1
     elif list2:

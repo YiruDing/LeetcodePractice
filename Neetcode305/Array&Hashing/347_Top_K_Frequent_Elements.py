@@ -9,10 +9,12 @@ class Solution:
 
         for n, c in count.items():
             freq[c].append(n)
+#2/16 用idx表示出現次數！所以接著可以從後面開始抓進res內
 # 長這樣 [[], [3], [2], [1], [], [], []]
         result = []
         for i in range(len(freq) - 1, 0, -1):
             for n in freq[i]:
+                # !!2/16 記得這個！！
                 result.append(n)
                 # 長這樣
                 # result: [1]

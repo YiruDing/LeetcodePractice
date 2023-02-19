@@ -14,10 +14,10 @@ class Solution:
                 # 用來記錄字母數一樣的word
                 # 長得像這樣：
                 # !! [1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0]
-                # Take the Unicode代碼點 以作為ｉｎｄｅｘ
+                # Take the Unicode代碼點 以作為index
                 # https://vimsky.com/zh-tw/examples/usage/ord-function-python.html
             result[tuple(count)].append(word)
-            # In Python,list can not be key,so we have to make it tuple
+            #!! In Python,list can not be key(immutable不可以為key),so we have to make it tuple
 
         return result.values()
 
@@ -34,6 +34,7 @@ class Solution:
         for word in strs:
             sk = "".join(sorted(word))
             # 8/23 sorted的字作key,word作value
+            # 2/16 因為string is immutable,不可以用sorted(word)
             if sk in d:
                 d[sk].append(word)
             else:

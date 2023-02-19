@@ -12,6 +12,6 @@ class Solution:
 
     # 另解：
     #     def lengthOfLastWord(self, s: str) -> int:
-    # s= s.rstrip()            # removes spaces at the end
+    # s= s.rstrip()            # 2/16 本步驟可省略 removes spaces at the end
     # lst = s.split()          # gives a list of words by splitting at the spaces
     # return len(lst[-1])
