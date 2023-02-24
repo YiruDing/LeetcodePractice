@@ -20,9 +20,11 @@ class Solution:
             if f:
                 # 2/21 此位置有花
                 n -= int((empty - 1)/2) # int division, round toward zero
-                # 2/21 ??
+                # 2/21 如果empty是3，才可能減一！
                 empty = 0
+                # 2/21 清算之前累積的empty數目，而且重新計算之後是否有位置種花
             else:
                 empty += 1
         n -= int(empty) // 2
+        
         return n <= 0
