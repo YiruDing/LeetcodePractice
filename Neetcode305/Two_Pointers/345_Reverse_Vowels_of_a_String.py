@@ -20,7 +20,7 @@ class Solution:
 # 超簡要解答
 def reverseVowels(self, s):
     vowels = (c for c in reversed(s) if c in 'aeiouAEIOU')
-    return re.sub('(?i)[aeiou]', lambda m: next(vowels), s)
+    return re.sub('(?i)[aeiou]', lambda x: next(vowels), s)
 
 
 # re.sub(pattern, repl, string[, count])
