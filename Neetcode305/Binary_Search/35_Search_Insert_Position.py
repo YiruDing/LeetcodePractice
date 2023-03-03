@@ -1,4 +1,4 @@
-# My solution
+# My solution O(n)須改善，題目說必須要O(log n)
 class Solution:
 
     def searchInsert(self, nums: List[int], target: int) -> int:
@@ -39,3 +39,23 @@ class Solution:
         return l
 
     # 不管是大於最大值，或小於最小值，l都會變得大於r，所以return l...例子見neetcode影片
+
+    # Neetcode另外一個有點讓人困惑的解
+    class Solution:
+
+        def searchInsert(self, nums: List[int], target: int) -> int:
+            l, r = 0, len(nums)
+
+            while l < r:
+                # 3/2 不能是l <= r 喔，因為可能即使l = r 也永遠找不到該值
+                mid = l + (r - l) // 2
+                if target <= nums[mid]:
+                    # 3/2 target < nums[mid] 會超時，因為沒法改變l或r的值
+                    r = mid
+                    # 3/2  為什麼 r 不能是 mid -1?
+                elif target > nums[mid]:
+                    l = mid + 1
+                # 3/2 為什麼以下兩行可有可無呢？
+                # else:
+                # return mid
+            return l
