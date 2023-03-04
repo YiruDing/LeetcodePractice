@@ -13,4 +13,6 @@ class Solution:
             else:
                 l = mid + 1
                 res = max(mid, res)
+                # 3/3 為何只能在此update res的值，而不能寫在r = mid - 1 的後面呢？
+                # 也不能寫在這個if...else...之外 ＠＿＿＠
         return res
