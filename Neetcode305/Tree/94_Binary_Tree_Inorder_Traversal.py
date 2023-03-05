@@ -25,6 +25,7 @@ class Solution:
         inorder(root)
         return res
 
+
 # Iterative solution
 # Use stack to store the value,when a node has no left child,pop!
 class Solution:
@@ -41,6 +42,7 @@ class Solution:
             # 走到最左邊
             cur = stack.pop()
             res.append(cur.val)
+            # 3/5 cur.val喔！
             cur = cur.right
             # append之後，往右一個node，再繼續往左走到底...
             # 基本上，他做的是上面inorder fn做的事情
