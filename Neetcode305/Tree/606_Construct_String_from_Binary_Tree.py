@@ -4,6 +4,7 @@
 #         self.val = val
 #         self.left = left
 #         self.right = right
+# Ｔ：Ｏ（n）
 class Solution:
 
     def tree2str(self, root: Optional[TreeNode]) -> str:
@@ -23,6 +24,7 @@ class Solution:
             preorder(root.right)
 
             res.append(')')
+            # 3/6 記得這行
 
         preorder(root)
         return ''.join(res)[1:-1]

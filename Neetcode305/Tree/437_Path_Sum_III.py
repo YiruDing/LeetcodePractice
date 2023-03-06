@@ -19,7 +19,7 @@ class Solution:
             tmp.append(root.val)
             if currentSum < 0:
                 tmp.popleft()
-
+# 3/6 ??
             if root.left:
                 dfs(root.left, tmp, currentSum)
             if root.right:
