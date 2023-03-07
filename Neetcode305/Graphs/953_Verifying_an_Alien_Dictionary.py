@@ -18,6 +18,7 @@ class Solution:
                         return False
                     break
                 # 記得break!
+                # 3/6 stop 這一輪的j loop,因為這兩字的順序已經沒問題了
                 # https://www.zhihu.com/question/37076998
 
         return True

@@ -7,7 +7,7 @@ class Solution:
         def dfs(i, j):
             if i < 0 or j < 0 or i >= ROWS or j >= COLS or grid[i][j] == 0:
                 return 1
-            # reach out to the boundry，所以加一
+            # 3/6 !!reach out to the boundry，所以加一
             if (i, j) in visit:
                 return 0
 

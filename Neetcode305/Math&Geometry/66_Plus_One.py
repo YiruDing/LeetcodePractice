@@ -1,3 +1,6 @@
+# T:O(n) S:O(1)
+
+
 class Solution:
 
     def plusOne(self, digits: List[int]) -> List[int]:
@@ -12,10 +15,11 @@ class Solution:
                     digits[i] += 1
                     one = 0
             else:
+                # 3/6 如果到digits尾端，還沒結束的態勢，那就要加一
                 digits.append(1)
                 one = 0
             i += 1
-            print("digits:", digits)
+
         return digits[::-1]
 
 
