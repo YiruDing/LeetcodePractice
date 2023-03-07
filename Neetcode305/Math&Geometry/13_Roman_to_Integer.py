@@ -16,7 +16,7 @@ class Solution:
         for char in s:
             number += translations[char]
         return number
-# 2
+# solution 2
 # 1/19.. Why? 
 class Solution:
 # @param {string} s
