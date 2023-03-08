@@ -18,7 +18,7 @@ class Solution:
 
 
 # Another solution:
-# Need some more time to figure it out...
+# 用 logic and 來記錄出現的'1'
 class Solution:
 
     def hammingWeight(self, n: int) -> int:
@@ -27,9 +27,9 @@ class Solution:
             # As there are 1 bits...
             n = n & (n - 1)
             # n &= (n-1)
-            #  Or you can write
-            #  n &= (n-1)
+            # 或可寫為 n &= (n-1)
             # Counting the num to exactly 1 bit
             # Skip all the zero in between
             result += 1
+            # 3/7 能夠跑到這裡，代表一定有一個需要get rid of的'1'
         return result
