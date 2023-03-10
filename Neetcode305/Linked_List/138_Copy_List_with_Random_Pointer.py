@@ -7,7 +7,7 @@ class Solution:
 
     def copyRandomList(self, head: 'Optional[Node]') -> 'Optional[Node]':
         oldToCopy = {None: None}
-        # hashMap
+        # use the hashMap to leverage the random pointer
 
         cur = head
         #1. Copy EVERY single node

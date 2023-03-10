@@ -10,6 +10,7 @@ class Solution:
                 length =0
                 # this should be the beginning of the length
                 while(n+length) in numSet:
+                # 3/9 記得開展的方式是n+length ！
                     length+=1
                 longest = max(length,longest)
         return longest

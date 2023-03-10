@@ -37,6 +37,8 @@ class Codec:
         res = ""
         for s in strs:
             res += str(len(s)) + "#" + s
+
+
 # res: 5#Hello
 # res: 5#Hello5#World
         return res
@@ -48,11 +50,12 @@ class Codec:
             j = i
             while str[j] != "#":
                 j += 1
-            # 當j=="#",while 斷開後，append其值
+            # 當j=="#",while 斷開後，append其值。
+            # 3/9 因為可能超過個位數，必須這樣操作
             length = int(str[i:j])
             # i始於原點，j是其後的“＃”，所以str[i:j]就是“5#Hello”的5!!!
             # length: 5
-            # length: 5
             res.append(str[j + 1:j + 1 + length])
+            # 3/9 j在delimiter（＃）的位置，所以要加一
             i = j + 1 + length
         return res

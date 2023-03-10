@@ -3,6 +3,7 @@ class Codec:
     def __init__(self):
         self.encodeMap = {}
         self.decodeMap = {}
+        # Empty hashmap
         self.base = "http://tinyurl.com/"
 
     def encode(self, longUrl: str) -> str:

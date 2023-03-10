@@ -1,10 +1,10 @@
-# O(1)!
+# hashset 可以有Ｏ(n),但題目要求O(1) space!!
 # To apply the Floyd's agorithm to identify the beginning of the cycle
 class Solution:
 
     def findDuplicate(self, nums: List[int]) -> int:
         slow, fast = 0, 0
-        # find the intersection
+        # find the intersection/ cycle
         while True:
             slow = nums[slow]
             fast = nums[nums[fast]]
