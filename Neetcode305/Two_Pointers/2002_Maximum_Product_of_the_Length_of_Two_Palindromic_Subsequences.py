@@ -3,6 +3,7 @@
 #HashMap[key = bitmask,str 的二元]
 # value 為palindrome的長度
 
+# Use bitmask to make sure they are disjoint
 
 class Solution:
 
@@ -15,7 +16,7 @@ class Solution:
             for i in range(N):
                 if mask & (1 << i):
                     # 2/27 不是 and 喔！
-                    # Check if it include the charaater at this position
+                    # Check if it include the character at this position
                     subseq += s[i]  #right to left
                     # You can also try this to add to the right side: N - i - 1
             if subseq == subseq[::-1]:

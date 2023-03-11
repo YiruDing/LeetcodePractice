@@ -12,19 +12,21 @@ class Solution:
         time = 0
         q = deque()
         # To trace the info needed
-        # pairs of [-cnt剩幾個字母要處理，idleTime間隔]
+        # pairs of [-cnt剩幾個字母/task要處理，idleTime間隔]
 
         while maxHeap or q:
             time += 1
 
             if maxHeap:
                 cnt = 1 + heapq.heappop(maxHeap)
+                # 3/10 一次處理掉一個task,可以用1+ 負數 來表示
                 if cnt:
                     q.append([cnt, time + n])
                     # 8:28 time+n:
                     # Check what time is this task going to be available for us to process once again
             if q and q[0][1] == time:
                 # !!time值一直滾動調整
+                # 3/10 " q and"不可省略，否則會出現以下警訊：deque index out of range
                 heapq.heappush(maxHeap, q.popleft()[0])
 
         return time

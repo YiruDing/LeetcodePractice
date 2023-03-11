@@ -8,6 +8,7 @@ class Solution:
         # split the list into two halves
         left = head
         right = self.getMid(head)
+        # 3/10 接下來三行很重要，要能讓right獨立出來，再進行merge
         tmp = right.next
         right.next = None
         right = tmp

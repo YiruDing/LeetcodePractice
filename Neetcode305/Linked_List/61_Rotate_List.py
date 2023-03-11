@@ -16,7 +16,8 @@ class Solution:
             # 10/24 和 2/14 不是tail
             tail = tail.next
             length += 1
-
+        
+        # 3/10 記得下面三行，處理ｋ
         k = k % length
         if k == 0:
             return head

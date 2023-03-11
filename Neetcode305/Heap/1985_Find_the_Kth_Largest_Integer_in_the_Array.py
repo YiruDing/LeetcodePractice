@@ -1,3 +1,15 @@
+# 3/10/2023 Leetcode改成str了  ＠＿＿＿＠
+class Solution:
+
+    def kthLargestNumber(self, nums: List[str], k: int) -> str:
+        maxHeap = [-int(n) for n in nums]
+        heapq.heapify(maxHeap)
+        while k > 1:
+            heapq.heappop(maxHeap)
+            k -= 1
+        return str(-maxHeap[0])
+
+
 # Solution: Sorting
 # Time Complexity:
 #   - Best Case: O(n)

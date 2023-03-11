@@ -23,7 +23,7 @@ class Solution:
             second.next = curr
             curr.next = nxtPair
             prev.next = second
-            # ！！prev.next不是curr而是second
+            # !! 3/10 !! prev.next不是curr而是second
             # 第一輪：這會是dummy head的開頭
 
             # Update pointers

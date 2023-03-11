@@ -14,7 +14,7 @@ class Solution:
         for row in wall:
             total = 0
             for brick in row[:-1]:
-                # 不可include the most right gap
+                # 3/10 不可include the most right gap
                 total += brick
                 countGap[total] = 1 + countGap.get(total, 0)
 

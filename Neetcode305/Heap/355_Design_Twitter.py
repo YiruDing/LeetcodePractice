@@ -9,7 +9,7 @@ from collections import defaultdict
 class Twitter:
 
     def __init__(self):
-        self.count = 0
+        self.count = 0  # How many total tweets we have
         self.tweetMap = defaultdict(list)  #userId ->list of [count,tweetIds]
         self.followMap = defaultdict(set)  #userId -> set of followeeId
         # 亦可直接用hashＭap self.tweetMap={}
@@ -18,6 +18,7 @@ class Twitter:
     def postTweet(self, userId: int, tweetId: int) -> None:
         self.tweetMap[userId].append([self.count, tweetId])
         self.count -= 1
+        # 3/10 因為用於minHeap,所以採用負數
 
     def getNewsFeed(self, userId: int) -> List[int]:
         res = []  #Ordered starting from recent

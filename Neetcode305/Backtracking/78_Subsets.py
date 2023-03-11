@@ -11,6 +11,7 @@ class Solution:
                 result.append(subset.copy())
                 # 11/25 記得append!
                 return
+            # 3/11 記得 return
             # 也可以寫作return result
 
             subset.append(nums[i])
