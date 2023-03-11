@@ -13,13 +13,15 @@ class Solution:
             # All subsets that includes nums[i]
             subset.append(nums[i])
             backtrack(i + 1, subset)
+            # 3/11 在這裡我們可能加上duplicate
             subset.pop()
 
             # All subsets that don't include nums[i]
 
             #Avoit the duplicates
             while i + 1 < len(nums) and nums[i] == nums[i + 1]:
-                # 不是nums[i - 1] == nums[i]??因為已經append過，再處理沒意義了，只能處理未來的那個數字
+                #  3/11 在這裡我們要跳過一個值（以及其duplicate）
+                # 記得是確認 i + 1 < len(nums)
                 i += 1
             backtrack(i + 1, subset)
             # indetation注意！ 還有 i + 1

@@ -1,3 +1,4 @@
+# 1
 class Solution:
 
     def combinationSum(self, candidates: List[int],
@@ -12,7 +13,7 @@ class Solution:
                 # And use it recursively
                 return
                 # !!不是return res!!
-            # 踢掉沒可能的
+            # 剔除掉沒可能的
             if i >= len(candidates) or total > target:
                 return
 
@@ -26,3 +27,26 @@ class Solution:
 
         dfs(0, [], 0)
         return result
+
+
+#2
+class Solution:
+
+    def combinationSum(self, candidates: List[int],
+                       target: int) -> List[List[int]]:
+        res = []
+
+        def helper(idx, path, t):
+            if t == target:
+                res.append(path.copy())
+                return
+            if t > target or idx >= len(candidates):
+                return
+
+            helper(idx, path + [candidates[idx]], t + candidates[idx])
+            # 因為每一個數都可以無限疊加，所以在這個可能性中，idx可以維持原位
+            helper(idx + 1, path, t)
+            # 亦可忽略此處的值，徑直往前
+
+        helper(0, [], 0)
+        return res
