@@ -33,7 +33,7 @@ class Solution:
 #     你寫一次nested recurrsion就明白了...
 #    2. 再說，如果只是shallow copy, res append的referrence會因為之後的更動而被更動！那就不能正確呈現其值了
 
-            if target < 0:
+            if target <= 0:
                 return
 
             prev = -1
