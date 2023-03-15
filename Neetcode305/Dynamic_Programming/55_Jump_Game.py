@@ -5,10 +5,18 @@ class Solution:
 
         for i in range(len(nums) - 1, -1, -1):
             if i + nums[i] >= goal:
+                # 3/14 記得是>= goal喔
                 goal = i
 
         return True if goal == 0 else False
 
+
+# 3/14
+# 以下解行不通，因為如果走到某個為0的位置，就根本無法前進了
+# idx = 0
+# for i in range(len(nums)):
+#     idx += nums[i]
+# return True if idx >= len(nums) - 1 else False
 
 # My solution...
 # To be fixed...

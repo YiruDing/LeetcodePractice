@@ -4,6 +4,7 @@ class Solution:
         intervals.sort(key=lambda i: i[0])
         # !! Deal with the first value of the array
         output = [intervals[0]]
+        # 3/14 記得加上外面的[]
         # !! make it easier to update the second value of the inner array(s)
         for start, end in intervals[1:]:
             lastEnd = output[-1][1]
