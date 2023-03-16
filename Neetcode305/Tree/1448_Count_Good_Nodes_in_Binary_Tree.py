@@ -11,13 +11,15 @@ class Solution:
             if not node:
                 return 0
             res = 1 if node.val >= maxVal else 0
+            # >=
             maxVal = max(maxVal, node.val)
-            # 12/8 maxVal 後於res初始值
+            # 12/8 maxVal 後於res調整初始值
             res += dfs(node.left, maxVal)
             res += dfs(node.right, maxVal)
             return res
 
         return dfs(node, node.val)
+    # 3/16 記得return 
 
     # not dfs(node, 0)
 

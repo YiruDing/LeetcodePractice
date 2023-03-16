@@ -14,6 +14,7 @@ class Solution:
         while q:
             qlen = len(q)
             rightSide = None
+            # 3/16 一次次歸零
             for i in range(qlen):
                 node = q.popleft()
                 if node:
@@ -22,6 +23,8 @@ class Solution:
                     q.append(node.right)
             if rightSide:
                 res.append(rightSide.val)
+                # 3/16 相較於102
+                # 只取queue最後一個值，其餘捨棄
 
         return res
 

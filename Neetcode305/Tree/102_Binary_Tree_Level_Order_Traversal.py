@@ -20,6 +20,7 @@ class Solution:
                 if node:
                     # 勿忘line17!
                     level.append(node.val)
+                    # 3/16 node.val! 
                     queue.append(node.left)
                     queue.append(node.right)
             if level:
