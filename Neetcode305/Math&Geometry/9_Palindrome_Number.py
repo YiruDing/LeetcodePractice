@@ -17,6 +17,7 @@ class Solution:
     
 # Neetcode
 # 技巧：去頭去尾
+# 搞不清楚？用13931去跑跑看，就知道了...
 class Solution:
     def isPalindrome(self, x: int) -> bool:
         if x < 0:
@@ -25,7 +26,7 @@ class Solution:
         div = 1
         while x >= 10 * div:
             div *= 10
-        # 抓到要去頭的除數
+        # 抓到最大位數的除數，來“去頭”(抓出最大/最左的位數)
         
         while x:
             right = x % 10
@@ -36,5 +37,5 @@ class Solution:
             x = (x % div) // 10
             # 抓出個位數
             div = div // 100
-            #  抓出最大/最左的位數
+            #  update 最大位數的除數
         return True

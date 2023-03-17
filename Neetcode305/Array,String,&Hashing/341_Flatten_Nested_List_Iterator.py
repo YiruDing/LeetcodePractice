@@ -42,6 +42,7 @@ class NestedIterator(object):
             for i in nI:
                 if i.isInteger():
                     tmp.append(i.getInteger())
+                    # 3/16 為何需要特別這樣寫，不就是integer嗎？
                     # Record.GetInteger(field)
 
 
