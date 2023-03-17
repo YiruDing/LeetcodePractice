@@ -17,17 +17,18 @@ class Solution:
     def lengthOfLIS(self, nums):
         tails = [0] * len(nums)
         size = 0
-        for x in nums:
+        for n in nums:
             i, j = 0, size
             while i != j:
                 m = int((i + j) / 2)
-                if tails[m] < x:
+                if tails[m] < n:
                     i = m + 1
                     # Check the right side 可以繼續往下...後面i+1表示長度可以加一
                 else:
                     j = m
                     # Check the left side 回頭看看是否有可匹配的數值
-            tails[i] = x
+            tails[i] = n
+            # 3/17 這行是什麼意思啊＠＿＿＠
             size = max(i + 1, size)
             print('Check the size: ', size)
         return size
