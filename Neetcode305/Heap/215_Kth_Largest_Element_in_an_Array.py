@@ -11,6 +11,7 @@ class Solution:
 
         while k > 1:
             # 3/10 為何不能用  while len(res) > k:
+            # 3/20 JM: 假設1-10 要取第三大的數，理論上是8...但如果用 while 10 > 3去跑，就搞錯了！
             heapq.heappop(nn)
             k -= 1
         return str(-nn[0])

@@ -1,3 +1,5 @@
+# 審題！ some number of flip
+
 # Neetcode
 class Solution:
     def flipEquiv(self, root1: Optional[TreeNode], root2: Optional[TreeNode]) -> bool:
@@ -17,8 +19,12 @@ class Solution:
 # Iterative version: BFS
 def flipEquiv(self, r1: TreeNode, r2: TreeNode) -> bool:
         dq1, dq2 = map(collections.deque, ([r1], [r2]))
+        # 亦可寫作
+        # dq1 = collections.deque([r1])
+        # dq2 = collections.deque([r2])
         while dq1 and dq2:
             node1, node2 = dq1.popleft(), dq2.popleft()
+            # 一次pop出一個node,之後再補兩個（如果左右都有的話）進去
             if node1 == node2 == None: continue 
             elif not node1 or not node2 or node1.val != node2.val: return False
 
@@ -27,8 +33,10 @@ def flipEquiv(self, r1: TreeNode, r2: TreeNode) -> bool:
             else:
                 dq1.extend([node1.right, node1.left])
             dq2.extend([node2.left, node2.right])
+              # 亦可用((node2.left, node2.right))
         return not dq1 and not dq2
-    
+
+
 # Iterative version: DFS
  def flipEquiv(self, r1: TreeNode, r2: TreeNode) -> bool:
         stk1, stk2 = [r1], [r2]

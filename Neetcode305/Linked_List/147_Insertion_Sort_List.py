@@ -12,13 +12,18 @@ class Solution:
                 # 不需換順序，只要換pointer
                 continue
             # 3/10 走到需要變動的地方
+            # 3/20 注意！
+            # 10-11可能會讓cur跑到結尾的後面,a.k.a. None
+            # 一旦開始移動cur 之後要使用之前，都要確認是否不為None
             tmp = dummy
             # 逆向回去確認前值
-            while cur.val > tmp.next.val:
+            while tmp.next and cur and cur.val > tmp.next.val:
                 # !!不是tmp.val
                 tmp = tmp.next
                 # 勿忘這兩行！
                 # 繼續往前走，找到插入點
+            if cur == None:
+                break
             prev.next = cur.next
             # prev跟下下一個接在一起了
             cur.next = tmp.next

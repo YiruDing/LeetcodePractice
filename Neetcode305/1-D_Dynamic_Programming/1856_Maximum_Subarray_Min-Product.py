@@ -24,6 +24,7 @@ class Solution:
                 res = max(res, val * total)
                 # 往前一個(或多個)位數，以前一個值去乘自己，看看這個值是否足以取代目前的res
                 newStart = start
+                # 3/20 為何可以重新設定index?不是應該處理連續的數字？
 
             stack.append((newStart, n))
 
