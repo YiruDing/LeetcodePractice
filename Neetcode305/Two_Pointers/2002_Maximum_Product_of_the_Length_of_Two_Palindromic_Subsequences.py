@@ -85,6 +85,7 @@ class Solution:
                 if mask & (1 << i) > 0:
                     subseq += s[i]
             if subseq == subseq[::-1]:
+            # 注意：是for loop後才來確認的！
                 arr.append((mask, len(subseq)))
 
         arr.sort(key=lambda x: x[1], reverse=True)

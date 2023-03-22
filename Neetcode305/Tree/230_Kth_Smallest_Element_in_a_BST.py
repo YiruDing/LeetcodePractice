@@ -15,6 +15,7 @@ class Solution:
                 root = root.left
             # root左邊裝滿後，開始pop
             root = stack.pop()
+            # 3/21 之後要往右走，亦得從每個node去走...
             k -= 1
             if k == 0:
                 return root.val

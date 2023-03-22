@@ -9,6 +9,7 @@ class Solution:
             total += nums[r]
 
             while nums[r] * (r - l + 1) > total + k:
+            # 需要縮小window囉
                 total -= nums[l]
                 l += 1
 

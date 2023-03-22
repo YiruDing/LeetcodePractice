@@ -1,3 +1,6 @@
+# Neetcode: It's like looking for the anagram
+
+
 class Solution:
 
     def checkInclusion(self, s1: str, s2: str) -> bool:
@@ -7,7 +10,7 @@ class Solution:
         for i in range(len(s1)):
             s1Count[ord(s1[i]) - ord('a')] += 1
             s2Count[ord(s2[i]) - ord('a')] += 1
-        # 假設二者全同，之後再移動window來確認
+        #initiate the counter，之後再移動window來確認
 
         matches = 0
         for i in range(26):
@@ -15,8 +18,10 @@ class Solution:
 
         left = 0
         for right in range(len(s1), len(s2)):
+            # 因為s1長度的s2已經放入s2Count中了
             if matches == 26: return True
             #  increment the window
+            #  接下來right加字,左邊減字
             index = ord(s2[right]) - ord('a')
             s2Count[index] += 1
             if s1Count[index] == s2Count[index]:
@@ -48,7 +53,9 @@ class Solution:
             while cnt[c] < 0:
                 # If number of characters `c` is more than our expectation
                 #s1無此數或者該字母的數目多於預期（出現不該出現的字母），就馬上給他處理下去
-                cnt[s[l]] += 1  # Slide left until cnt[c] == 0
+                cnt[s[l]] += 1
+                # 3/21
+                # Slide left until cnt[c] == 0
                 #！！！讓index從c之後開始
                 print("cnt2:", cnt)
                 l += 1

@@ -2,7 +2,11 @@
 # https://leetcode.com/problems/monotonic-array/solutions/165889/c-java-python-one-pass-o-n/?q=python&orderBy=most_votes
  def isMonotonic(self, A):
         return not {cmp(i, j) for i, j in zip(A, A[1:])} >= {1, -1}
-    # mp(x,y) 函数用于比较2个对象，如果 x < y 返回 -1, 如果 x == y 返回 0, 如果 x > y 返回 1
+    # cmp(x,y) 函数用于比较2个对象，如果 x < y 返回 -1, 如果 x == y 返回 0, 如果 x > y 返回 1
+    
+    # cmp doesn't exist in Python 3. If you really want it, you could define it yourself:
+    # def cmp(a, b):
+    # return (a > b) - (a < b) 
     
 # 2
 # https://leetcode.com/problems/monotonic-array/solutions/165960/python-solution-easy-to-understand/?q=python&orderBy=most_votes
