@@ -29,7 +29,7 @@ class WordDictionary:
 
                 if c == '.':
                     for child in cur.children.values():
-                        # 11/24: values!!
+                        # 11/24 & 3/22 : !!!!! values !!!!
                         # 可否直接寫cur.children??
                         if dfs(i + 1, child):
                             return True

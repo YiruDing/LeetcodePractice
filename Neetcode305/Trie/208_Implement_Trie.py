@@ -36,4 +36,5 @@ class Trie:
             if c not in cur.children:
                 return False
             cur = cur.children[c]
+            # 3/22 記得這行！
         return True
