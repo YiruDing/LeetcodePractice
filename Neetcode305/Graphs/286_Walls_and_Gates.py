@@ -1,4 +1,4 @@
-
+# BFS from multiple source, just like Rotting orange
 class Solution:
     """
     @param rooms: m x n 2D grid
@@ -31,6 +31,7 @@ class Solution:
             for i in range(len(q)):
                 r, c = q.popleft()
                 rooms[r][c] = dist
+                # 3/24 記得這行！
                 addRooms(r + 1, c)
                 addRooms(r - 1, c)
                 addRooms(r, c + 1)

@@ -5,7 +5,7 @@ class Solution:
         neighbors = {city: [] for city in range(n)}
         visit = set()
         changes = 0
-
+        # Fill our neighbors in hashmap
         for a, b in connections:
             neighbors[a].append(b)
             neighbors[b].append(a)
@@ -20,10 +20,16 @@ class Solution:
                 if neighbor in visit:
                     continue
                 if (neighbor, city) not in edges:
+                    # 順序沒錯！是要找a朝向b,neighbor朝向city的線
+                    # check if this neighbor can reach city 0
                     changes += 1
+                    # Count outgoing edges
                 visit.add(neighbor)
                 dfs(neighbor)
+                # Check if the neighbor's neighbor can also reach out to 0
 
         visit.add(0)
         dfs(0)
+        # Start at city 0
+        # Recursicely check its neighbors
         return changes
