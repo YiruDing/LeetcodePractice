@@ -81,6 +81,7 @@ def fourSum(self, nums, target):
             return
         if N == 2:  # two pointers solve sorted 2-sum problem
             while l < r:
+            # 3/25 記得這行！
                 s = nums[l] + nums[r]
                 if s == target:
                     results.append(result + [nums[l], nums[r]])

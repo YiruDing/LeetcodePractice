@@ -5,6 +5,9 @@ def isSubPath(self, head, root):
     def dfs(head, root):
         if not head: return True
         if not root: return False
+        # 一定是先確認head 再處理root!
+        # ＪＭ：窮舉之後，再統整
+        
         return root.val == head.val and (dfs(head.next, root.left)
                                          or dfs(head.next, root.right))
   

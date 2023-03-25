@@ -32,15 +32,16 @@ class Solution:
                     if (row < 0 or row == len(grid) or col < 0
                             or col == len(grid[0]) or grid[row][col] != 1):
                         continue
+                    # 3/24 記得是continue而非break
                     # make sure it's in bounds and it's a fresh orange(1)
                     grid[row][col] = 2
                     q.append([row, col])
                     fresh -= 1
             # input:[[2,1,1],[1,1,0],[0,1,1]]
             # 這裡的q分別長這樣：
-                              # q: deque([[1, 0], [0, 1]])
-                              # q: deque([[1, 1], [0, 2]])
-                              # q: deque([[2, 1]])
+            # q: deque([[1, 0], [0, 1]])
+            # q: deque([[1, 1], [0, 2]])
+            # q: deque([[2, 1]])
             time += 1
             # 問題：這個位置是for i in range(len(q)) loop結束之後跳出來的？
             # 答案：對。把一批次的q解決掉，再處理第二批次的q...

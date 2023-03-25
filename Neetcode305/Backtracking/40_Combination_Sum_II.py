@@ -1,19 +1,19 @@
 # 2/11 你值得更好的解答
 class Solution(object):
     def combinationSum2(self, candidates, target):
-        ret = []
-        self.dfs(sorted(candidates), target, 0, [], ret)
-        return ret
+        res = []
+        self.dfs(sorted(candidates), target, 0, [], res)
+        return res
     
-    def dfs(self, nums, target, idx, path, ret):
+    def dfs(self, nums, target, idx, path, res):
         if target <= 0:
             if target == 0:
-                ret.append(path)
+                res.append(path)
             return 
         for i in range(idx, len(nums)):
             if i > idx and nums[i] == nums[i-1]:
                 continue
-            self.dfs(nums, target-nums[i], i+1, path+[nums[i]], ret)
+            self.dfs(nums, target-nums[i], i+1, path+[nums[i]], res)
             
 # Neetcode
 

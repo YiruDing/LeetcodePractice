@@ -15,9 +15,8 @@ class Solution:
             # whether all the digits are reused
             if self.areDigitsIn(digits, hh, mm):
                 return '{0:0>2}:{1:0>2}'.format(hh, mm)
-                # >右對齊，補在右邊 寬度二
-                # >左對齊，補在左邊 寬度二
-                
+                # >右對齊，若有空白，補0在左邊 寬度二
+                # <左對齊，補在右邊 寬度二
 
 
 # e.g.:
