@@ -8,7 +8,8 @@ class Solution:
         val, idx = arr[0], 0
         while l <= r:
             m = (l + r) // 2
-            curDiff, resDiff = abs(arr[m] - x), abs(val - x)
+            curDiff = abs(arr[m] - x)
+            resDiff = abs(val - x)
             if curDiff < resDiff or (curDiff == resDiff and arr[m] < val):
                 val, idx = arr[m], m
 
