@@ -15,6 +15,7 @@ class Solution:
 
             if h >= hours:
                 result = min(result, k)
+                # 3/26 因為是要從上面慢慢降下來的，所以要在這裏update值
                 right = k - 1
             else:
                 left = k + 1
