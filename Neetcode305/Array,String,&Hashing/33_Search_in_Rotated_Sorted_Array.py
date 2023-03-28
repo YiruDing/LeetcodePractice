@@ -12,6 +12,7 @@ class Solution:
 
             if nums[mid] >= nums[left]:
                 if target > nums[mid] or target < nums[left]:
+                    # 3/27 都是 or!!
                     left = mid + 1
                 else:
                     right = mid - 1

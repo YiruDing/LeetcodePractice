@@ -10,11 +10,13 @@ class Solution:
         while left < right:
             # 1 row/time
             for i in range(right - left):
+                # 3/27 !!
                 # Why right-left?
                 # Ｃause we are dealing with the range that would shrink by 2 comparing to the outter row...
                 # 處理的是二者的差，方形的框 然後再慢慢縮緊這個框架...
                 top = left
                 bottom = right
+                # 3/27 是在這層喔！
                 topLeft = matrix[top][left + i]
                 # store the value(which starts with[0][0]) so we can start to move
 

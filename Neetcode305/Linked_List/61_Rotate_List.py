@@ -12,6 +12,7 @@ class Solution:
 
         # Get length
         length, tail = 1, head
+        # !! 3/27 length 從1開始！!
         while tail.next:
             # 10/24 和 2/14 不是tail
             tail = tail.next
@@ -26,8 +27,9 @@ class Solution:
         #否則就是... Move to the pivot and rotate
         cur = head
         for i in range(length - k - 1):
-            # 不是length - k ＋ 1
-            # 官方解答：new head is in the position n - k, where n is a number of nodes in the list. The new tail is just before, in the position n - k - 1.
+            # 3/27 !!!不是length - k ＋ 1
+            # 官方解答：
+            # new head is in the position n - k, where n is a number of nodes in the list. The new tail is just before, in the position n - k - 1.
             cur = cur.next
         # 走完之後，用newHead儲值，作為新的起始點
         newHead = cur.next

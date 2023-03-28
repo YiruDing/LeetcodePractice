@@ -8,10 +8,11 @@ class Solution:
         stack = []
         while root or stack:
             # !!!
-            # 3/16 not "and"
+            # 3/16 3/27 not "and"
             while root:
                 stack.append(root)
                 # 3/16 為何不是append(cur.val)?比較：Leetcode 102
+                # 3/27 JM:這是append node，之後會使用到
                 root = root.left
             # root左邊裝滿後，開始pop
             root = stack.pop()
