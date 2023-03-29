@@ -51,6 +51,7 @@ class Solution:
                 cur.append(candidates[i])
                 # 2/9 這標示著新的recurrsion的開始
                 backtrack(cur, i + 1, target - candidates[i])
+                # 3/27 3/29 i + 1=7而非pos + 1!
                 cur.pop()
                 #    update prev
                 # ！！！！！記得i + 1

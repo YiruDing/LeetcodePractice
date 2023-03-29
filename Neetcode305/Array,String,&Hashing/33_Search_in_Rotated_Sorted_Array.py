@@ -11,6 +11,7 @@ class Solution:
                 return mid
 
             if nums[mid] >= nums[left]:
+                # 3/28 意味他們同屬於左半邊..等號因此該放這裡唷！
                 if target > nums[mid] or target < nums[left]:
                     # 3/27 都是 or!!
                     left = mid + 1

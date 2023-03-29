@@ -25,6 +25,7 @@ class Solution:
 #                 right=mid-1
 
             if nums[mid] >= nums[left]:
+                # 3/28 >= !
                 if target > nums[mid] or target < nums[left]:
                     left = mid + 1
                 else:

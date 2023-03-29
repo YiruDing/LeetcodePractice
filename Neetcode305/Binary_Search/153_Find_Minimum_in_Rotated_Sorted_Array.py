@@ -15,5 +15,5 @@ class Solution:
                 l = middle + 1
             else:
                 r = middle - 1
-
+            # result = min(result, nums[middle])亦可放這裡
         return result
