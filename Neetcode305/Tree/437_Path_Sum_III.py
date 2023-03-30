@@ -53,6 +53,7 @@ class Solution(object):
                 rec[currSum] += 1
             else:
                 rec[currSum] = 1
+            # line 52-55 不知為何，在defaultdict下亦不能寫成rec[currSum] += 1
             count += dfs(root.left, currSum, sum)
             count += dfs(root.right, currSum, sum)
             rec[currSum] -= 1
