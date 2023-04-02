@@ -19,6 +19,7 @@ class Solution:
             if grid1[r][c] == 0:
                 # 如果grid1[r][c]==0代表grid2[r][c]並非sub island
                 res = False
+            # 3/30 這兩行別搞錯了！
 
             res = dfs(r - 1, c) and res
             res = dfs(r + 1, c) and res
@@ -33,5 +34,6 @@ class Solution:
             for c in range(COLS):
                 if grid2[r][c] and (r, c) not in visited and dfs(r, c):
                     # dfs(r,c) means it has a corresponding island in grid1
+                    #  dfs(r, c)必須放在 (r, c) not in visited後面
                     count += 1
         return count
