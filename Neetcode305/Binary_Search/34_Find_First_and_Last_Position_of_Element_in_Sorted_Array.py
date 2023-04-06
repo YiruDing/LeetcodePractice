@@ -19,8 +19,10 @@ class Solution:
                 i = m
                 # i = m要放在這裡！
                 if leftBias:
+                    # 找左邊
                     r = m - 1
                 else:
+                    # 找右邊
                     l = m + 1
         return i
 
