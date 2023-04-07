@@ -1,21 +1,4 @@
-class Solution:
-
-    def maximumRemovals(self, s: str, p: str, removable: List[int]) -> int:
-
-        pCount = collections.Counter(p)
-        rCount = {}
-        res = 0
-
-        for i in range(len(removable)):
-            rCount[removable[i]] = 1 + rCount.get(removable[i], 0)
-
-        for c in pCount:
-            if pCount[c] < rCount[c]:
-                res += rCount[c] - pCount[c]
-        return res
-
-
-    # Neetcode answer
+# Neetcode answer
 class Solution:
 
     def maximumRemovals(self, s: str, p: str, removable: List[int]) -> int:
@@ -25,7 +8,7 @@ class Solution:
 
             while i1 < len(s) and i2 < len(subseq):
                 if i1 in removed or s[i1] != subseq[i2]:
-                    # 已經被移走，或是未找到標的物
+                    # 被列入可移走的set，或是未找到標的物
                     i1 += 1
                     continue
                 i1 += 1
