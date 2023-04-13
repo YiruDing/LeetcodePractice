@@ -6,6 +6,7 @@ class Solution:
 
         res = [0] * (len(num1) + len(num2))
         num1, num2 = num1[::-1], num2[::-1]
+        # 4/12 勿忘上面這一行！
 
         for i1 in range(len(num1)):
             for i2 in range(len(num2)):
@@ -15,6 +16,7 @@ class Solution:
                 # 10/7儲存在這裡是為了之後可以用到
                 res[i1 + i2 + 1] += res[i1 + i2] // 10
                 res[i1 + i2] = res[i1 + i2] % 10
+                # 上一行亦可作 res[i1 + i2] %= 10
                 # e.g. 8 * 12
 
         res, begin = res[::-1], 0
