@@ -33,6 +33,7 @@ class Solution:
                     result = [left, right]
                     resultLen = right - left + 1
                 window[s[left]] -= 1
+                # 4/17 下面是要去確認window[s[left]]的狀況，只有window[s[left]] - 1， 才能符合window[s[left]] < countT[s[left]]的條件:
                 # remove the left most to shrink the window
                 if s[left] in countT and window[s[left]] < countT[s[left]]:
                     have -= 1

@@ -33,6 +33,8 @@ class Solution:
 
 
 # https://leetcode.com/problems/path-sum-iii/solutions/170367/python-solution/?q=python&orderBy=most_votes
+# 4/17 為何用dictionary? 因為數字是遞增的，所以只要找到能切割的點，即可
+
 class Solution(object):
 
     def pathSum(self, root, sum):

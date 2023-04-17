@@ -8,15 +8,17 @@ class Solution:
 
         for r in range(numRows):
             increment = 2 * (numRows - 1)
+            # 4/14 2 * (numRows - 1) 而非 2 * numRows
             # 此為每個字母的起始間隔，隨著zigzag往下或往上，都會動態調整
             # Gotta go all the way down and up again
             for i in range(r, len(s), increment):
                 res += s[i]
                 if (r > 0 and r < numRows - 1
                         and (i + increment - 2 * r) < len(s)):
-                    # r本來在0~numRows - 1的範圍，但如果往上或往下走，間隔會變小，放進res的字會變多...
+                    # r本來在0 ~ numRows - 1的範圍，但如果往上或往下走，間隔會變小，放進res的字會變多...
                     res += s[i + increment - 2 * r]
                     # V shape...decrease by 2 each time
+                    # 4/14 r < numRows - 1 which means it's in the last row...???
 
     # 6:58 Each jump is going to be decreasing by 2
 
