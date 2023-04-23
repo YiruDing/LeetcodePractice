@@ -14,6 +14,8 @@ class Solution:
                 return
             for j in range(i, min(i + 3, len(s))):
                 if int(s[i:j + 1]) < 256 and (i == j or s[i] != '0'):
+                    # To avoit any leading zero:
+                    # the length of the digit has to be exactly one or not start with 0
                     backtrack(j + 1, dots + 1, curIp + s[i:j + 1] + '.')
 
         backtrack(0, 0, '')
