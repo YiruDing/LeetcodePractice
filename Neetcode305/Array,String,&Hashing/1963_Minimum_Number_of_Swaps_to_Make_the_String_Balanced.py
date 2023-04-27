@@ -18,5 +18,21 @@ class Solution:
                     check.append('[')
 
         return res
+
+
 # When we did the swap, we took 3 closing brackets and turns into 2 bracket...As we turn 1 of them to be an opening bracket, we would CANCEL OUT 1 of the closing bracket!
 # Thus each swap actually gets rid of 2 extra closing brackets
+class Solution:
+
+    def minSwaps(self, s: str) -> int:
+        extraClose, maxClose = 0, 0
+
+        for c in s:
+            if c == "[":
+                extraClose -= 1
+            else:
+                extraClose += 1
+
+            maxClose = max(maxClose, extraClose)
+
+        return (maxClose + 1) // 2  # Or math.ceil(maxClose / 2)
